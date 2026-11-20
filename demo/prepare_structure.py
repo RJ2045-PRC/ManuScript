@@ -32,6 +32,9 @@ for old, new in hooks.items():
     html = html.replace(old, new)
 (out / "workbench.html").write_text(html, encoding="utf-8")
 
+sys.path.insert(0, str(workbench.resolve()))
+from authoring.build_reading import build_reading
+
 with zipfile.ZipFile(here.parent / "examples/杯盖与降温/完成态项目.zip") as archive:
     manifest = json.loads(archive.read("manifest.json"))
     project = manifest["project"]
@@ -44,6 +47,8 @@ with zipfile.ZipFile(here.parent / "examples/杯盖与降温/完成态项目.zip
         assert [[b[k] for k in fields] for b in blocks] == [[b[k] for k in fields] for b in version["blocks"]]
         snapshots[draft["id"][-2:]] = {"blocks": blocks, "versions": [{"id":version["id"]}],
                                       "exhibits": version["exhibits"], "references": version["references"]}
+    for draft, seed in snapshots.items():
+        seed["logicWork"], seed["workStatus"] = build_reading(seed, project, draft)
     files = {a["id"]: {"name": a["name"], "data": base64.b64encode(archive.read("files/" + a["sha"])).decode()}
              for a in project["assets"] if a["name"].endswith(".png")}
     draft_text = (here.parent / "examples/杯盖与降温/稿件/Draft-02.md").read_text(encoding="utf-8")

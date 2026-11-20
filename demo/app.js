@@ -26,8 +26,8 @@ function current(){
   const structure = view==='structure';
   const safeIndex = n => Number.isSafeInteger(Number(n)) && Number(n)>0 ? Number(n) : 1;
   return {view:['map','read','structure','review'].includes(view)?view:'map',
-    key:(view==='read'||structure)&&(key==='title'||/^heading-\d+$/.test(key))?key:order.includes(key)&&!(structure&&key==='refs')?key:structure?'4.1':lastRead,
-    version:(view==='read'||structure)&&manuscriptDesk.valid(version)?version:version==='01'?'01':'02',scale:['overview','logic'].includes(scale)?scale:'cards',
+    key:(view==='read'||structure)&&(key==='title'||/^heading-\d+$/.test(key))?key:order.includes(key)&&!(structure&&key==='refs')?key:structure?'title':lastRead,
+    version:(view==='read'||structure)&&manuscriptDesk.valid(version)?version:version==='01'?'01':'02',scale:structure&&!scale?'overview':['overview','logic'].includes(scale)?scale:'cards',
     located:['cards','logic'].includes(scale),paragraph:p==='0'?0:safeIndex(p),sentence:safeIndex(s)};
 
 }
@@ -100,7 +100,7 @@ function render(){
   $('#workspace').innerHTML=r.view==='read'?manuscriptDesk.template()+'<details class="document-guide"><summary>'+tr('走查引导','Walkthrough')+'</summary>'+rail(r)+'</details>':r.view==='structure'?structuralReader(r):'<div class="layout">'+(r.view==='map'?mapPanel():review())+rail(r)+'</div>';
   if(r.view==='structure')updateStructureGuide(r);
   if(r.view==='read'){manuscriptDesk.mount(r);$('.document-guide').open=documentGuideOpen;}
-  const install=english?'blob/main/README.en.md#install-with-an-agent':'#复制给-agent-安装';
+  const install=english?'#install-with-an-agent':'blob/main/README.zh-CN.md#复制给-agent-安装';
   $('#footer').innerHTML=`<span>ManuScript · ${tr('v0.13.0 首次公开测试版。正式版仍在开发中。','v0.13.0 is the first public beta. The stable release is still in development.')}</span><span><a href="${examples}">${tr('下载完整示例','Download the full example')}</a><a href="${release}/${install}">${tr('安装 ManuScript','Install ManuScript')}</a></span>`;
 }
 let sourceOpener=null, sourcePage=0;
@@ -145,7 +145,7 @@ document.addEventListener('click',event=>{
     navigateStructure(d.position);
 
   }
-  else if(d.view==='structure'){const r=current();navigateStructure(structurePath('structure',r.view==='read'&&r.key!=='refs'?r.key:'4.1',r.view==='read'?r.version:lastDraft,'overview',1,1));}
+  else if(d.view==='structure'){const r=current();navigateStructure(structurePath('structure',r.view==='read'&&r.key!=='refs'?r.key:'title',r.view==='read'?r.version:lastDraft,'overview',1,1));}
   else if(d.view==='read')go('read',lastRead,'work');
   else if(d.view)go(d.view);
   else if(d.expand)setExpanded(d.expand);
