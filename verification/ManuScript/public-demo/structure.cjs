@@ -3,6 +3,7 @@ const {chromium} = require('playwright');
 const assert = require('node:assert/strict');
 const [demo, product] = process.argv.slice(2);
 if (!demo || !product) throw Error('Usage: node structure.cjs <static demo URL> <local release workbench URL>');
+const publicSite = new URL(demo).protocol === 'https:';
 const revised='要估计单独加盖的温差，应看研究二中同一只杯子的两次终点读数。';
 const original='杯盖减缓了降温。';
 async function level(surface,n) {
@@ -18,7 +19,9 @@ async function parity(browser) {
   const native=await browser.newPage(), page=await browser.newPage();
   page.on('pageerror',e=>console.error(e.message));
   page.on('requestfailed',r=>console.error(r.failure().errorText,new URL(r.url()).pathname));
-  native.setDefaultTimeout(7000);page.setDefaultTimeout(7000);
+  native.setDefaultTimeout(7000);
+  page.setDefaultTimeout(publicSite ? 30000 : 7000);
+  page.setDefaultNavigationTimeout(60000);
   await native.goto(product);
   await native.locator('.documentStudio').waitFor();
   await native.locator('[data-workspace-view=scales]').click();
@@ -43,7 +46,8 @@ async function tour(browser,width,lang) {
   page.on('pageerror',e=>errors.push(e.message));
   page.on('requestfailed',r=>{if(r.failure()?.errorText!=='net::ERR_ABORTED')errors.push(r.failure()?.errorText)});
   page.on('response',r=>{if(r.status()>=400)errors.push(String(r.status())+' '+new URL(r.url()).pathname)});
-  page.setDefaultTimeout(6000);
+  page.setDefaultTimeout(publicSite ? 30000 : 6000);
+  page.setDefaultNavigationTimeout(60000);
   const l=s=>page.locator(s), f=page.frameLocator('#structure-workbench');
   await page.goto(demo+'?lang='+lang+'#map');
   await l('[data-view=structure]').click();
