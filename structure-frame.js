@@ -10,7 +10,7 @@ const structureFrame = (() => {
   function request(op,args) {
     const key='manuscript.demo.structure.';
     switch(op){
-      case 'work_status': return {status:'idle'};
+      case 'work_status': return project.workStatus;
       case 'team_catalog': return {rows:[]};
       case 'reading_glossary': return {exists:false};
       case 'file': if(structureSample.files[args.asset])return structureSample.files[args.asset];break;
@@ -38,11 +38,25 @@ const structureFrame = (() => {
       const original=row.key==='title'?seed.blocks[0]:byTitle.get(row.title);
       while(levels.length && levels.at(-1).level>=row.level)levels.pop();
       const b=original?{...original}:{id:'demo-'+row.key,format:'md',rev:1,parent:levels.at(-1)?.id};
+      b.parent=levels.at(-1)?.id??null;
       b.title=row.title;
       if(row.changed || !original)b.text=row.raw;
       b.demoKey=row.key; blocks.push(b);levels.push({id:b.id,level:row.level});
     }
     project={...sample.base,...seed,blocks,id:'demo-0130-'+version,settings:{...sample.base.settings}};
+    // Keep exact chapter results on edits; a changed chapter or order invalidates the cross-chapter reading.
+    const before=new Map(seed.blocks.map(b=>[b.id,b]));
+    const staleBlocks=blocks.filter(b=>{
+      const old=before.get(b.id);
+      return !old || old.title!==b.title || old.text!==b.text || old.parent!==b.parent;
+    }).map(b=>b.id);
+    const changed=staleBlocks.length>0 || blocks.length!==seed.blocks.length || blocks.some((b,i)=>b.id!==seed.blocks[i]?.id);
+    // The archive represents the paper title as a parent of every top-level heading.
+    // In the reading outline each chapter starts its own group; keep its subsections attached.
+    const titleId=blocks.find(b=>b.demoKey==='title')?.id;
+    project.blocks=blocks.map(b=>b.parent===titleId?{...b,parent:null}:b);
+    project.logicWork={published:{...seed.logicWork.published,stale:changed,staleBlocks}};
+    project.workStatus={...seed.workStatus,changed};
     project.settings.logicStyle=cached('manuscript.demo.structure.style',project.settings.logicStyle);
     project.notes=cached('manuscript.demo.structure.'+project.id,[]).filter(note=>{
       const block=blocks.find(b=>b.id===note.block);
@@ -62,7 +76,9 @@ const structureFrame = (() => {
       // Match the release reader's 12px paragraph anchor. CSS scroll-margin is for ordinary navigation.
       pane.scrollTop+=el.getBoundingClientRect().top-pane.getBoundingClientRect().top-12;
     }
-    if(target){
+    if(scale===1 && block?.demoKey==='title'){
+      root.querySelector(root.dataset.compare==='true'?'.msScaleMain':'.msReadingScroll').scrollTop=0;
+    }else if(target){
       locate(target);
       if(target.matches('.msScaleParagraph'))target.dataset.demoCurrent='';
     }
@@ -73,10 +89,13 @@ const structureFrame = (() => {
       const card=el?.closest('[data-paragraph]');
       const index=Number(card?.dataset.paragraph?.split(':').at(-1));
       const text=b && Number.isInteger(index)?b.text.split(/\n\s*\n/u).filter(x=>x.trim())[index]:null;
-      send('position',{key:b?.demoKey,raw:text,scale:stages[Number(root.dataset.scale)-1]});
+      const graphNode=el?.closest('[data-scale-unit]');
+      const paragraph=project.logicWork.published.chapters[id]?.paragraphs[index];
+      const unit=graphNode && paragraph?.units.find(u=>u.id===graphNode.dataset.scaleUnit);
+      send('position',{key:b?.demoKey,raw:text,quote:unit?.quote,scale:stages[Number(root.dataset.scale)-1]});
       if(card){
         root.querySelector('[data-demo-current]')?.removeAttribute('data-demo-current');card.dataset.demoCurrent='';
-        if(card.matches('.msScaleParagraph'))locate(card);
+        if(card.matches('.msScaleParagraph')&&!el.closest('button'))locate(card);
       }
     }
     root.addEventListener('click',event=>{
@@ -84,7 +103,7 @@ const structureFrame = (() => {
       if(el.closest('[data-scale-jump]')){
         const b=blocks.find(b=>b.id===el.closest('[data-scale-jump]').dataset.scaleJump);
         if(b)send('position',{key:b.demoKey,scale:'cards'});
-      }else if(el.closest('[data-paragraph]') && !el.closest('button,a'))report(el);
+      }else if(el.closest('[data-paragraph]') && (!el.closest('button,a') || el.closest('button[data-scale-paragraph]')))report(el);
     },true);
     new MutationObserver(()=>report(null)).observe(root,{attributes:true,attributeFilter:['data-scale']});
     root.addEventListener('click',e=>{

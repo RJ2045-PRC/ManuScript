@@ -94,7 +94,11 @@ window.addEventListener('message',event=>{
       const m=sectionMaterial(next);
       const index=msg.raw?m.paragraphs.findIndex(p=>p.textContent===plainParagraph(msg.raw)):-1;
       next.paragraph=msg.raw?index+1:1;next.sentence=1;
-      if(isReviewedPassage(next))next.sentence=sectionMaterial(next).lines.length;
+      const lines=sectionMaterial(next).lines;
+      if(msg.quote){
+        const line=lines.findIndex(s=>s.trim()===plainParagraph(msg.quote));
+        if(line>=0)next.sentence=line+1;
+      }else if(isReviewedPassage(next))next.sentence=lines.length;
     }
     history.replaceState(null,'','#'+structurePath('structure',next.key,r.version,next.scale,next.paragraph,next.sentence));
     const picker=document.querySelector('#structure-key');picker.value=next.key;
