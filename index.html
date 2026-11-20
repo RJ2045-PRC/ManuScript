@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#183d36">
+  <title>ManuScript · 杯盖与降温</title>
+  <link rel="icon" href="assets/mark.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="assets/paper.js"></script>
+  <script defer src="assets/editor/marked.umd.js"></script>
+  <script defer src="assets/editor/writing-editor.js"></script>
+  <script defer src="assets/editor/math.js"></script>
+  <script defer src="assets/editor/live-editor.js"></script>
+  <script defer src="structure.js"></script>
+  <script defer src="document.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="mast"><div class="mast-inner"><div class="brand"><img src="assets/mark.svg" alt="">ManuScript</div><span id="edition"></span><button id="language"></button></div></header>
+  <main>
+    <header class="paper-title"><div><p id="byline"></p><h1 id="title"></h1><p id="subtitle"></p></div><span class="release">v0.13.0</span></header>
+    <nav id="tabs" aria-label="工作区"></nav>
+    <div id="workspace"></div>
+    <footer id="footer"></footer>
+  </main>
+  <dialog id="source"></dialog>
+</body>
+</html>
