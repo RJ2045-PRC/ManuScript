@@ -1,50 +1,52 @@
-# ManuScript
+<h1 align="center"><img src="packages/ManuScript/assets/logo.svg" width="48" height="48" alt=""> ManuScript</h1>
 
-[简体中文](README.md) · **English**
+<p align="center"><a href="README.md">简体中文</a> · <strong>English</strong></p>
 
-ManuScript is a local workspace for research writing. Lay out a paper in a chapter map, follow a citation to the page that supports it, and match a Word comment to the exact passage your reviewer read.
+ManuScript is a local workspace for research writing. Find a passage in the chapter map, follow a citation to its source PDF, and match a Word comment to the sentence your reviewer read.
 
-v0.13.0 is the first public beta. The stable release is still in development.
+**v0.13.0 is the first public beta. The stable release is still in development.**
 
-[Try the interactive demo](https://rj2045-prc.github.io/ManuScript/?lang=en) · [Download v0.13.0 public beta](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [Read the sample paper (Chinese)](examples/杯盖与降温/稿件/Draft-02.md) · [Install with an agent](#install-with-an-agent)
-
-![The chapter map shows sections 3.1 through 3.4 under Results, with section 3.3 selected.](docs/screenshots/results-chapter-map-b4d8c98d.png)
-
-*In the cup-cooling example, expand 3 Results to see four subsections. Select 3.3 and choose “⋯ → 定位正文” to jump from the map to the experiment in the manuscript.*
+**[Open the interactive demo](https://rj2045-prc.github.io/ManuScript/?lang=en)** · [Install with an agent](#install-with-an-agent) · [Download the beta](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [Check platform support](#platform-support)
 
 ## Screenshots
 
-**From a claim to the data.** The first draft says, “The lid slowed cooling.” A reviewer spots a problem. One cup was glass and the other ceramic, so how much of the difference came from the lid? Section 3.3 of the revision compares each cup with and without its lid. Section 4.1 revisits the claim. These screenshots show the completed project bundled with v0.13.0, running in DSH Web 0.2.2-rc.1 on macOS. The sample and the interface shown are in Chinese.
+![The chapter map shows four Results subsections, with section 3.3 selected.](docs/screenshots/results-chapter-map-b4d8c98d.png)
 
-![Section 3.3 in Draft 02. Table 2 lists the mean temperatures with and without a lid and the within-cup differences.](docs/screenshots/draft-02-results-table-fc5a6899.png)
+*The chapter map for the cup-cooling study. Select 3.3 and choose “⋯ → 定位正文” to open its results in the manuscript. Screenshots show v0.13.0 in DSH Web 0.2.2-rc.1 on macOS.*
 
-<details>
-<summary>Follow a citation to page 2 of the measurement log</summary>
+## Follow a review comment through the paper
 
-Open the classroom measurement citation in section 3.1. The source window shows the pinned passage alongside the original PDF, open to the round-by-round temperature readings.
+“The lid slowed cooling,” says the first draft. The reviewer points out that the lidded cup was glass and the open cup was ceramic. Could the cups themselves explain the temperature gap? Follow the evidence in your browser. The demo has English navigation. The paper, review comments and embedded structural reader are in Chinese.
 
-![The CupLog source window displays the pinned evidence and page 2 of 2 in the PDF viewer.](docs/screenshots/source-pdf-page-2-aeb7b31c.png)
-
-</details>
-
-<details>
-<summary>Read the discussion paragraph by paragraph</summary>
-
-Select section 4.1 in structural reading. The left pane separates the argument into paragraph cards. The manuscript view on the right keeps the paragraphs in context as the discussion continues into section 4.2.
-
-![Two paragraph cards from section 4.1 alongside their text in the manuscript.](docs/screenshots/discussion-paragraphs-78375718.png)
-
-</details>
-
-## Try the paper
-
-| Starting point | What you get |
+| Open in the demo | What to look for |
 |---|---|
-| [Read the revision on GitHub](examples/杯盖与降温/稿件/Draft-02.md) · [Download the PDF](examples/杯盖与降温/稿件/Draft-02-修订稿.pdf) | An original simulated study with six chapters, 14 numbered subsections, figures, tables, equations and APA 7 references. |
-| Open **载入杯盖与降温示例** after installation | Inspect both saved Drafts, citations pinned to source pages, and the review comment the author accepted. |
-| [Follow the walkthrough (Chinese)](examples/杯盖与降温/README.md) · [Open the annotated Word file](examples/杯盖与降温/稿件/Draft-01-审阅回稿.docx) | Restore the starter project, write from idea cards, save Draft 01, import the Word comment, check the evidence and export Draft 02. This exercise works offline. |
+| [Chapter map](https://rj2045-prc.github.io/ManuScript/?lang=en#map) | Expand 2 Method, select 2.2 and use the node menu to jump to the full text. |
+| [Section 2.2 and its citation](https://rj2045-prc.github.io/ManuScript/?lang=en#read/2.2/02) | Open the measurement log on PDF page 1 to check the setups. The same source in 3.1 opens the readings on page 2. |
+| [Within-cup comparison in 3.3](https://rj2045-prc.github.io/ManuScript/?lang=en#read/3.3/02) | Read Table 2 to compare each cup’s final temperature with and without its lid. |
+| [Passage and revision in 4.1](https://rj2045-prc.github.io/ManuScript/?lang=en#structure/4.1/02/cards/2/2) | Jump from the second paragraph card to its sentence. Then compare the Word comment, the original claim and the revision. |
 
-The working manuscript saves automatically. Choose **保存 Draft** (Save Draft) to create the first numbered snapshot or preserve a changed manuscript. The release workflow diagram was made with Archify 3.2.0 by tt-a1i. [Diagram, interactive version and source (Chinese)](docs/07-manuscript-workflow.md) · [Archify](https://github.com/tt-a1i/archify)
+<details>
+<summary>See screenshots of the manuscript, source PDF and structural reader</summary>
+
+**Manuscript.** The contents pane locates section 3.3. Table 2 lists the mean final temperatures with and without a lid and the difference for each cup.
+
+![Section 3.3 with Table 2 in the manuscript.](docs/screenshots/draft-02-results-table-fc5a6899.png)
+
+**Citation.** The measurement-log citation in 3.1 opens CupLog on page 2, where the reader can check the readings for each round.
+
+![Page 2 of the measurement log in the source viewer.](docs/screenshots/source-pdf-page-2-aeb7b31c.png)
+
+**Structural reading.** The paragraph cards in 4.1 sit beside the corresponding passages in the continuous manuscript.
+
+![Paragraph cards for section 4.1 alongside the source manuscript.](docs/screenshots/discussion-paragraphs-78375718.png)
+
+</details>
+
+### Sample paper and files
+
+The original simulated study includes six chapters, 14 numbered subsections, figures, tables, equations and APA 7 references. [Read the revised paper](examples/杯盖与降温/稿件/Draft-02.md) · [Paper PDF](examples/杯盖与降温/稿件/Draft-02-修订稿.pdf) · [Annotated Word file](examples/杯盖与降温/稿件/Draft-01-审阅回稿.docx)
+
+After installation, choose **载入杯盖与降温示例** to open the completed project with both Drafts. For hands-on practice, restore the starter project, write from idea cards, save a Draft, import comments and export the revision. The working manuscript saves automatically. **保存 Draft** (Save Draft) creates a numbered snapshot on the first save or after an edit. [Sample walkthrough (Chinese)](examples/杯盖与降温/README.md) · [Workflow diagram and source (Chinese)](docs/07-manuscript-workflow.md), made with [Archify](https://github.com/tt-a1i/archify) 3.2.0 by tt-a1i.
 
 ## Install with an agent
 

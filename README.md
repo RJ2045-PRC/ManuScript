@@ -1,50 +1,52 @@
-# ManuScript
+<h1 align="center"><img src="packages/ManuScript/assets/logo.svg" width="48" height="48" alt=""> ManuScript</h1>
 
-**简体中文** · [English](README.en.md)
+<p align="center"><strong>简体中文</strong> · <a href="README.en.md">English</a></p>
 
-ManuScript 是一个本地论文写作工作台。你可以在导图里搭章节，从正文引文跳到来源 PDF 的具体页，再把 Word 批注对回审阅人读到的那一版。
+ManuScript 是一个本地论文写作工作台。在章节导图里找到要改的段落，从正文引文打开来源 PDF，再把 Word 审阅意见对回当时送审的那句话。
 
-v0.13.0 是首次公开测试版，正式版仍在开发中。
+**v0.13.0 是首次公开测试版，正式版仍在开发中。**
 
-[试用交互演示](https://rj2045-prc.github.io/ManuScript/) · [下载 v0.13.0 首次公开测试版](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [阅读示例论文](examples/杯盖与降温/稿件/Draft-02.md) · [复制给 Agent 安装](#复制给-agent-安装)
-
-![章节导图展开 3 Results，显示 3.1 至 3.4 四个子节，当前选中 3.3 八组同杯比较。](docs/screenshots/results-chapter-map-b4d8c98d.png)
-
-*在「杯盖与降温」示例中，展开 3 Results 可以看到四个结果小节。选中 3.3，点「⋯ → 定位正文」就能读到对应的实验结果。*
+**[打开交互演示](https://rj2045-prc.github.io/ManuScript/)** · [复制给 Agent 安装](#复制给-agent-安装) · [下载公测版](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [查看平台支持](#平台支持)
 
 ## 实机截图
 
-**从章节读到数据。** 首稿里有一句「杯盖减缓了降温。」审阅人问，一只是玻璃杯，另一只是陶瓷杯，怎么知道温差来自盖子？修订稿在 3.3 节列出同一只杯子分别加盖和敞口时的读数，再在 4.1 节收窄结论。以下截图取自 macOS 上的 DSH Web 0.2.2-rc.1，载入的是 v0.13.0 插件内置的完成态项目。
+![章节导图展开 3 Results，显示四个结果小节，选中 3.3 八组同杯比较。](docs/screenshots/results-chapter-map-b4d8c98d.png)
 
-![正文左侧目录选中 3.3，右侧表 2 列出两种杯子的敞口均温、有盖均温和同杯差。](docs/screenshots/draft-02-results-table-fc5a6899.png)
+*「杯盖与降温」示例的章节导图。选中 3.3，在节点旁点「⋯ → 定位正文」即可读到对应结果。截图来自 macOS 上的 DSH Web 0.2.2-rc.1，使用 v0.13.0 公测插件。*
 
-<details>
-<summary>查看引文如何定位到原始记录的第 2 页</summary>
+## 跟着一条返修意见试用
 
-在 3.1 节点开课堂测量记录的引文，来源窗口会同时显示固定的证据片段和 PDF 第 2 页的逐轮读数。
+首稿写道：“杯盖减缓了降温。”审阅人发现，有盖的是玻璃杯，敞口的是陶瓷杯。观察到的温差究竟来自杯盖，还是两只杯子本身？可以在浏览器里沿着这条意见核对整篇稿件。
 
-![3.1 节的引文打开 CupLog 来源窗口，PDF 页码为 2/2。](docs/screenshots/source-pdf-page-2-aeb7b31c.png)
-
-</details>
-
-<details>
-<summary>查看讨论段落与正文如何并排核对</summary>
-
-在「结构阅读」选中 4.1，左侧按段拆开论证，右侧保留连续正文，可接着读 4.2 的温差分解。
-
-![4.1 的两张段落卡片与对应的连续正文并排显示。](docs/screenshots/discussion-paragraphs-78375718.png)
-
-</details>
-
-## 试读或亲手走一遍
-
-| 从哪里开始 | 可以看到什么 |
+| 在演示中打开 | 可以亲手核对什么 |
 |---|---|
-| [在线读修订稿](examples/杯盖与降温/稿件/Draft-02.md) · [下载 PDF](examples/杯盖与降温/稿件/Draft-02-修订稿.pdf) | 一篇含六章、14 个编号子节的原创模拟研究，包含图表、公式和 APA 第 7 版引文。 |
-| 安装后点「载入杯盖与降温示例」 | 直接查看完成态的两版 Draft、固定到页的引文，以及已采纳的审阅意见。 |
-| [跟随示例导读](examples/杯盖与降温/README.md) · [查看 Word 回稿](examples/杯盖与降温/稿件/Draft-01-审阅回稿.docx) | 恢复起点项目，选卡起草，保存 Draft 01，导入 Word 批注、核对证据，导出 Draft 02。基础练习可离线完成。 |
+| [章节导图](https://rj2045-prc.github.io/ManuScript/#map) | 展开 2 Method，选 2.2，再从节点跳到完整正文。 |
+| [2.2 正文与引文](https://rj2045-prc.github.io/ManuScript/#read/2.2/02) | 点课堂记录的引文，到 PDF 第 1 页核对装置。在 3.1 点击同一来源的引文，可看第 2 页逐轮读数。 |
+| [3.3 同杯比较](https://rj2045-prc.github.io/ManuScript/#read/3.3/02) | 读表 2，看同一只杯子分别加盖和敞口时的终点温度。 |
+| [4.1 段落卡与返修](https://rj2045-prc.github.io/ManuScript/#structure/4.1/02/cards/2/2) | 从第二张段落卡定位全文原句，再看 Word 批注、首稿措辞和修订结果。 |
 
-工作稿自动保存；点击「保存 Draft」会为首次保存或有改动的稿件留下编号快照。发布版流程图使用 Archify 3.2.0（tt-a1i）制作。[流程图、交互版与图源](docs/07-manuscript-workflow.md) · [Archify](https://github.com/tt-a1i/archify)
+<details>
+<summary>查看正文、来源页和结构阅读的实机截图</summary>
+
+**正文。** 目录定位到 3.3，表 2 并列给出两只杯子的敞口均温、有盖均温和同杯差。
+
+![3.3 的连续正文与表 2。](docs/screenshots/draft-02-results-table-fc5a6899.png)
+
+**核对引文。** 3.1 的课堂记录引文打开 CupLog 第 2 页，可逐轮查看原始读数。
+
+![CupLog 来源窗口显示测量记录第 2 页。](docs/screenshots/source-pdf-page-2-aeb7b31c.png)
+
+**结构阅读。** 左侧是 4.1 的段落卡片，右侧是可连续阅读的对应正文。
+
+![4.1 段落卡片与正文对照。](docs/screenshots/discussion-paragraphs-78375718.png)
+
+</details>
+
+### 示例论文与文件
+
+这篇原创模拟研究有六章、14 个编号子节，含图表、公式和 APA 第 7 版引文。[阅读修订稿](examples/杯盖与降温/稿件/Draft-02.md) · [论文 PDF](examples/杯盖与降温/稿件/Draft-02-修订稿.pdf) · [带批注的 Word 回稿](examples/杯盖与降温/稿件/Draft-01-审阅回稿.docx)
+
+安装后点「载入杯盖与降温示例」即可打开已有两版 Draft 的完成态项目。想自己走一遍，可以恢复起点项目，选卡起草、保存 Draft、导入批注，再导出修订稿。工作稿自动保存，点击「保存 Draft」会为首次保存或改动后的稿件留下编号快照。[示例操作导读](examples/杯盖与降温/README.md) · [稿件流转图与图源](docs/07-manuscript-workflow.md)（使用 tt-a1i 的 [Archify](https://github.com/tt-a1i/archify) 3.2.0 制作）
 
 ## 复制给 Agent 安装
 

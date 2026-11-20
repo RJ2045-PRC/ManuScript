@@ -15,7 +15,7 @@ for name in ("cup-setup.png", "endpoints.png", "crossover.png"):
     shutil.copyfile(materials / name, assets / name)
 shutil.copyfile(materials / "课堂测量记录.pdf", assets / "measurement-log.pdf")
 shutil.copyfile(sample / "稿件/Draft-01-审阅回稿.docx", assets / "review.docx")
-shutil.copyfile(here.parent / "packages/ManuScript/assets/mark.svg", assets / "mark.svg")
+shutil.copyfile(here.parent / "packages/ManuScript/assets/logo.svg", assets / "logo.svg")
 subprocess.run(["pdftoppm", "-png", "-r", "150", str(assets / "measurement-log.pdf"),
                 str(assets / "source")], check=True)
 
