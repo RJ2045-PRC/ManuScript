@@ -1,0 +1,108 @@
+{
+  "title": "A-Lab：一项合成结果如何被复核",
+  "credit": "Szymanski 等，Nature 624, 86–91 (2023)；作者更正，Nature 650, E1 (2026)。中文为 ManuScript 导读，练习稿非作者手稿。",
+  "sources": {
+    "paper": [
+      "更正后的论文 · 摘要",
+      "https://www.nature.com/articles/s41586-023-06734-w#Abs1"
+    ],
+    "review": [
+      "审稿人 1 · 第 1 页",
+      "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-023-06734-w/MediaObjects/41586_2023_6734_MOESM2_ESM.pdf#page=1"
+    ],
+    "reply": [
+      "原作者答复 · 第 5 页",
+      "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-023-06734-w/MediaObjects/41586_2023_6734_MOESM2_ESM.pdf#page=5"
+    ],
+    "fix": [
+      "作者更正 · E1",
+      "https://www.nature.com/articles/s41586-025-09992-y"
+    ],
+    "licence": [
+      "正文与更正 · CC BY 4.0",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ]
+  },
+  "blocks": [
+    {
+      "id": "intro",
+      "name": "界定研究问题",
+      "part": "引言",
+      "question": "为什么计算筛选之后，还需要做合成实验？",
+      "record": "计算可以筛出候选物；论文关注的是如何把候选物制成无机粉末，并根据实验结果调整合成路线。",
+      "refs": [
+        "paper"
+      ],
+      "old": "Computational screening solves the synthesis problem.",
+      "current": "Screening proposes candidates. A-Lab tests routes to inorganic powders.",
+      "task": "练习旧稿把筛选写成了合成。哪一种证据能支持后半句？",
+      "options": [
+        "仅有计算候选清单",
+        "有实验合成及其表征记录"
+      ],
+      "correct": 1,
+      "why": "发现计算候选与实验制得材料是两个事件。本文也不能直接支持 CuCrZr 的强度或电导率。",
+      "quote": "we introduce the A-Lab, an autonomous laboratory for the solid-state synthesis of inorganic powders."
+    },
+    {
+      "id": "notes",
+      "name": "给补充说明加标题",
+      "part": "补充材料",
+      "question": "如何从一条真实意见追到作者的回应？",
+      "record": "第一位审稿人建议为每条补充说明加概括性标题。作者在回复中表示已经添加，并列出了标题。",
+      "quote": "For each supplementary note, it might be helpful to readers if a summarizing title is given.",
+      "refs": [
+        "review",
+        "reply"
+      ],
+      "old": "See Supplementary Note 2.",
+      "current": "See Supplementary Note 2 on automated Rietveld refinement.",
+      "task": "现在只看到了意见与回信。能把它直接记作你已验收吗？",
+      "options": [
+        "记录作者已回复，保留自己核对附件的步骤",
+        "直接记作我已验收"
+      ],
+      "correct": 0,
+      "why": "回信与用户确认来自不同的人。页码可以验证作者如何作答，但这次练习没有代你验收稿件。"
+    },
+    {
+      "id": "results",
+      "name": "核对成功数与分母",
+      "part": "结果",
+      "question": "36/57 和 36/40 为什么可以同时成立？",
+      "record": "更正后的摘要报告：57 个目标中合成了 36 个。作者更正另述，复查平台报告成功的 40 个时，36 个得到确认，4 个仅凭衍射证据无法确定。",
+      "refs": [
+        "paper",
+        "fix"
+      ],
+      "old": "The platform succeeded on 36 of 40 targets.",
+      "current": "The updated report counts 36 successes among 57 targets. Of 40 reported successes reviewed, four remained inconclusive.",
+      "task": "如果写“占全部合成目标的比例”，分母该选哪个？",
+      "options": [
+        "40 个被复核的报告成功项",
+        "57 个合成目标"
+      ],
+      "correct": 1,
+      "why": "36/57 约为 63%。36/40 回答的是另一道题：曾被平台标为成功的结果，有多少经人工复查得到确认。无法确定不等于实验失败。"
+    },
+    {
+      "id": "removed",
+      "name": "保留被移除目标的记录",
+      "part": "讨论",
+      "question": "Zn₂Cr₃FeO₈ 从当前论述移除后，旧批注该挂在哪里？",
+      "record": "作者更正说明，这个化合物被误纳入训练数据，因而从讨论中移除。这是发表后的更正，与初审意见属于不同事件。",
+      "refs": [
+        "fix"
+      ],
+      "old": "Discuss Zn2Cr3FeO8 as a held-out example.",
+      "current": null,
+      "task": "模拟批注：“请解释这个样本是否在训练集里。”当前稿没有对应段落，如何处理？",
+      "options": [
+        "保留旧锚点和移除原因，当前稿待定位",
+        "自动挂到下一种化合物"
+      ],
+      "correct": 0,
+      "why": "可以查清删除原因，并不意味着出现了可替代的正文位置。保留旧版记录，是否结案交由作者决定。"
+    }
+  ]
+}

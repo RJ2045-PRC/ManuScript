@@ -1,0 +1,352 @@
+/* A quiet manuscript surface; tools keep the host's neutral palette. */
+.paperMenu{position:relative;display:inline-block;font:13px/1.5 system-ui;flex:none}
+.paperMenu>summary{display:flex;gap:6px;align-items:center;justify-content:space-between;list-style:none;cursor:pointer;user-select:none}
+.paperMenu>summary::-webkit-details-marker{display:none}
+.paperMenu>summary:hover,.paperMenu[open]>summary{background:var(--paper);color:var(--text)}
+.paperMenuPanel{position:fixed;z-index:90;box-sizing:border-box;width:min(270px,calc(100vw - 16px));overflow:auto;padding:8px;background:var(--ui);color:var(--text);border:1px solid var(--line);border-radius:var(--ms-panel-radius);box-shadow:var(--ms-panel-shadow);overscroll-behavior:contain;animation:msReveal var(--ms-motion-reveal) var(--ms-ease-out)}
+.paperMenu:not([open])>.paperMenuPanel{display:none}
+.paperMenuPanel>button,.paperMenuPanel>[data-writing-records]>button{display:block;width:100%;border:0;background:transparent;color:var(--text);text-align:left;padding:9px 10px;font:13px/1.5 system-ui;border-radius:5px}
+.paperMenuPanel button:hover{background:var(--paper)}
+.paperMenuPanel label{display:grid;gap:6px;padding:8px 10px;color:var(--soft);font-size:12px}
+.paperMenuPanel select{width:100%;min-width:0;font-size:13px;background:var(--paper);color:var(--text);border:1px solid var(--line)}
+.paperMenuPanel hr{border:0;border-top:1px solid var(--line);margin:6px}
+.paperMenuPanel small,.paperMenuPanel .readingHint{display:block;white-space:normal;font:12px/1.6 system-ui;margin:6px 10px}
+.paperMenuPanel .lxAidOptions{display:block;padding:8px 10px}
+.paperMenuPanel .lxAidOptions summary{cursor:pointer;color:var(--soft)}
+.readingToggles{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.readingToggles button{background:transparent;color:var(--text);border:1px solid transparent;padding:8px;font-size:13px}
+.paperMenuPanel button[aria-pressed=true]{background:var(--paper);border-color:var(--line)}
+.studioInsertMenu{width:min(166px,calc(100vw - 16px));z-index:120;padding:4px}
+.studioInsertMenu[hidden],.paperMenuPanel button[hidden]{display:none}
+.studioInsertMenu>small{margin:4px 9px 2px;color:var(--soft)}
+.inlineStudio .studioInsertMenu>button{padding:6px 9px}
+.studioInsertMenu>button:focus-visible{outline:2px solid var(--ms-focus);outline-offset:-2px;background:var(--paper)}
+.scholarDialog.equationDialog{width:min(820px,calc(100vw - 24px))}
+.equationTabs,.equationSnippets{display:flex;flex-wrap:wrap;gap:5px}
+.equationTabs{border-bottom:1px solid var(--line);margin-bottom:10px}
+.equationTabs button{border-radius:0;border-bottom:2px solid transparent}
+.equationTabs button[aria-pressed=true]{border-bottom-color:var(--ms-focus);color:var(--ms-focus)}
+.equationSnippets{margin-bottom:14px}
+.equationSnippets button{display:grid;justify-items:center;align-content:center;gap:4px;min-width:66px;min-height:58px;padding:4px 10px;border:1px solid var(--line);background:var(--card)}
+.equationSnippets button:hover{border-color:var(--ms-focus)}
+.equationSnippets button span:last-child{font-size:12px}
+[data-equation-feedback]{display:block;margin-top:6px;color:var(--soft);overflow-wrap:anywhere}
+[data-equation-feedback]:empty{display:none}
+.equationSnippets[hidden],.equationDialog [data-equation-insert-style][hidden]{display:none}
+.equationFields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.equationDialog .equationFields label,.equationPreview{display:grid;grid-template-rows:auto minmax(90px,1fr);gap:5px;margin:0}
+.equationDialog .equationFields textarea{resize:vertical;min-width:0;margin:0;font:14px/1.55 ui-monospace,monospace;padding:10px}
+.equationPreview>div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--ms-control-radius);padding:8px;background:var(--card)}
+[data-equation-preview]{overflow:auto;text-align:center;overflow-wrap:anywhere;padding:8px;color:var(--soft)}
+[data-equation-preview] math{font-size:1.3rem;color:var(--text)}
+[data-equation-slot]{color:var(--ms-focus);cursor:text}
+[data-equation-slot]:is([data-current],:hover){background:var(--ms-active);outline:1px solid var(--ms-focus)}
+.equationPreview small,.equationFooter small,.equationHistory small{color:var(--soft);font-size:12px}
+.equationFooter{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:12px}
+.equationDialog .equationFooter label{display:flex;align-items:center;margin:0}
+.equationCommit{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
+.equationCommit kbd{color:var(--soft);font:12px system-ui;white-space:nowrap}
+.equationCommit .msControl:not(:disabled){background:var(--ms-focus);color:var(--ui);border-color:var(--ms-focus)}
+.equationCommit .msControl:not(:disabled):hover{background:color-mix(in srgb,var(--ms-focus) 88%,var(--text))}
+.equationHistory{max-height:min(45vh,420px);overflow:auto}
+.equationHistory button{display:grid;grid-template-columns:minmax(64px,auto) minmax(0,1fr) minmax(0,1fr);align-items:center;gap:8px;width:100%;min-height:46px;border:0;border-bottom:1px solid var(--line);text-align:start}
+.equationHistory button:hover{background:var(--paper)}
+.equationHistory button span{overflow:auto;overflow-wrap:anywhere}
+.equationSwitch{margin-top:12px;padding:10px;border:1px solid var(--line);border-radius:var(--ms-control-radius);background:var(--card)}
+.equationSwitch p{margin:0 0 8px}
+.equationSwitch button{margin-inline-end:6px}
+.equationMigration:not([hidden]){margin-top:12px;padding-top:8px;border-top:1px solid var(--line)}
+.equationMigration p{margin:6px 0}
+@media(max-width:520px){
+ .equationFields{grid-template-columns:1fr}
+ .equationPreview{grid-template-rows:auto minmax(64px,1fr)}
+ .equationFields textarea{height:108px}
+ .equationHistory button{grid-template-columns:minmax(56px,auto) minmax(0,1fr)}
+ .equationHistory button>span{grid-column:2}
+}
+.readingToggles button[aria-pressed=true]::before{content:'✓ ';font-weight:600}
+:is(.paperMenu summary,.studio button,.manuscriptTools button,.readActions button):focus-visible{outline:2px solid var(--ms-focus);outline-offset:2px}
+
+#reader{background:var(--paper);padding:24px 28px 64px;scrollbar-gutter:stable}
+#reader>article{width:100%;max-width:880px;padding:24px clamp(20px,4vw,60px) 64px;background:var(--ui);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);border-radius:3px}
+#reader .manuscriptTools{display:flex;gap:4px;align-items:center;margin:0 0 22px;padding:0 0 12px;border-bottom:1px solid color-mix(in srgb,var(--line) 55%,transparent);font:13px/1.5 system-ui}
+.manuscriptLabel{margin-right:auto;color:var(--soft);letter-spacing:.12em;font-size:12px}
+#reader .manuscriptTools>button{background:transparent;border:0;color:var(--soft);padding:7px 10px;font-size:13px}
+#reader article>h2{font:600 clamp(22px,2.5vw,28px)/1.5 system-ui;margin:0 0 20px;color:var(--text);letter-spacing:-.025em}
+#reader section:not(.fpSection){border:0;border-top:1px solid color-mix(in srgb,var(--line) 45%,transparent);padding:20px 0;position:relative}
+#reader section.here{border-left:0}
+#reader section>h3{font:600 19px/1.5 system-ui;margin:0 0 12px;color:var(--text)}
+#reader.mode-color article>h2,#reader.mode-color section>h3{color:var(--text)}
+#reader section>small{color:var(--soft);font-size:11px}
+#reader section>.readActions{gap:6px;margin:0 0 16px;font:13px system-ui}
+#reader .readActions>button{background:transparent;border:1px solid var(--line);color:var(--soft);padding:6px 10px;border-radius:6px}
+#reader .rich{font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;overflow-wrap:anywhere}
+#reader .rich p{margin:0 0 1.1em}
+#reader .rich :is(h1,h2,h3,h4){color:var(--text);line-height:1.5}
+#reader .rich table{font-size:14px;line-height:1.6}
+#reader .rich :is(td,th){padding:8px 12px}
+#reader .readNotes{font:13px/1.6 system-ui;color:var(--soft);margin-top:22px}
+
+.inlineStudio.studio,#reader .inlineStudio.studio{position:relative;box-sizing:border-box;width:100%;height:clamp(440px,68dvh,820px);padding:0;border:0;border-radius:0;background:var(--ui);gap:0;overflow:auto}
+.inlineStudio .studioHead{margin:0 0 10px;min-height:28px}
+.inlineStudio .studioHead strong{font:500 13px/1.5 system-ui;color:var(--soft)}
+.inlineStudio .studioHead>[data-x]{background:none;border:0;color:var(--soft);padding:5px 8px}
+#reader .inlineStudio .studioHead{display:none}
+.inlineStudio .studioTools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0;padding:8px 0;flex:none;border-bottom:1px solid var(--line)}
+.studioModes{display:inline-flex;align-items:center;gap:2px;padding:2px;background:var(--paper);border:1px solid var(--line);border-radius:var(--ms-panel-radius)}
+.studioModes .msControl{min-block-size:28px;padding:3px 10px;color:var(--soft)}
+.studioModes .msControl[aria-pressed=true]{color:var(--text);background:var(--ui);border-color:var(--line);font-weight:600}
+.studioCommands{display:flex;align-items:center;gap:2px}
+.studioCommands>[data-citation]{border-color:var(--line)}
+.inlineStudio .paperMenuPanel button{font:13px/1.5 system-ui;padding:9px 10px}
+.inlineStudio .studioSelection{display:flex;align-items:center;gap:6px;padding:5px 0;font:12px system-ui;color:var(--soft);flex:none}
+.inlineStudio .studioSelection button{font-size:12px;background:var(--paper);color:var(--text);border:0;border-radius:5px;padding:5px 10px}
+.inlineStudio .writingPlan{font:12px/1.6 system-ui;color:var(--soft);border:0;margin:0;padding:10px 0}
+.inlineStudio .writingPlan summary{width:fit-content}
+.inlineStudio .writingPlan[open]{border-bottom:1px solid var(--line);padding-bottom:14px}
+.inlineStudio .writingPlan[open]>:not(summary){margin-top:10px}
+.inlineStudio .studioRich,.inlineStudio .studioProof{background:var(--ui);color:var(--text)}
+.inlineStudio .toastui-editor-defaultUI{border:0;background:var(--ui);font-family:inherit}
+.inlineStudio:not(.format-open) .toastui-editor-defaultUI-toolbar{display:none}
+.inlineStudio .toastui-editor-defaultUI-toolbar{background:var(--paper);border:0;border-bottom:1px solid var(--line);padding:4px 6px;min-height:40px}
+.inlineStudio .toastui-editor-ww-container{background:var(--ui)}
+.inlineStudio .toastui-editor-contents{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;color:var(--text)}
+.inlineStudio .toastui-editor-contents p{line-height:1.85;margin:0;color:var(--text)}
+.inlineStudio .toastui-editor-contents :is(h1,h2,h3,h4,li,td,th){color:var(--text)}
+.inlineStudio .toastui-editor-contents table{font-size:14px;line-height:1.6}
+.inlineStudio .ProseMirror,#reader .studio .ProseMirror,.inlineStudio .studioProof,#reader .studioProof{padding:22px 4px 40px;box-sizing:border-box}
+.inlineStudio .studioSource{border:0;padding:22px 4px 40px;outline:none;font:14px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;tab-size:2}
+.inlineStudio .studioSource:focus-visible{box-shadow:inset 2px 0 var(--line)}
+.inlineStudio .studioFoot{margin:0;padding:10px 0 0;border-top:1px solid color-mix(in srgb,var(--line) 55%,transparent);font:11px/1.5 system-ui;flex:none;color:var(--soft);gap:10px}
+.inlineStudio .studioFoot>button:not(.msControl){font:12px/1.4 system-ui;background:transparent;color:var(--text);border:1px solid var(--line);border-radius:5px;padding:5px 10px}
+.studioSave{display:flex;align-items:center;gap:4px;min-width:0;flex-wrap:wrap}
+.studioSave [data-state=error]{color:var(--ms-error)}
+.studioSave .msControl{font-size:12px}
+.inlineStudio .writeStatus{overflow-wrap:anywhere}
+.inlineStudio .findBar{padding:8px 0;margin:0;flex:none}
+.inlineStudio .findBar input{width:110px;flex:1;min-width:70px;background:var(--paper);color:var(--text);border:1px solid var(--line);border-radius:5px;padding:7px;font:13px system-ui}
+@media(max-width:700px){#reader{padding:12px 10px 36px}#reader>article{padding:16px 16px 32px}#reader .manuscriptTools{margin-bottom:22px}.inlineStudio .studioTools{flex-wrap:wrap}.inlineStudio .studioModes button{padding:6px 10px}.studioCommands{margin-left:auto}.inlineStudio.studio,#reader .inlineStudio.studio{height:68dvh;min-height:400px}}
+@media(prefers-reduced-motion:reduce){.paperMenuPanel{animation:none}}
+
+/* Toast preserves Markdown blank lines as empty paragraphs; do not double their spacing. */
+.inlineStudio .toastui-editor-contents p:has(>br:only-child){line-height:1.15}
+
+#reader section:not(.fpSection)>small{float:right;margin:5px 0 8px 12px}
+
+/* Full manuscript: one mode bar, one scroll surface, no chapter action rows. */
+#reader:has(.wholeDocument){padding:20px 24px 28px;overflow:hidden}
+#reader>.wholeDocument{height:100%;max-width:1000px;display:flex;flex-direction:column;padding:20px 40px 16px;box-sizing:border-box}
+.documentTitle{flex:none;margin:0 0 12px}
+.documentTitle small{font:11px/1.5 system-ui;letter-spacing:.12em;color:var(--soft)}
+.documentTitle h1{font:500 20px/1.45 system-ui;margin:4px 0 0;max-height:3em;overflow:auto;color:var(--text)}
+.wholeDocument>[data-document-slot]{flex:1;min-height:0;display:flex}
+#reader .documentStudio.inlineStudio.studio{height:100%;min-height:0;overflow:hidden;flex:1}
+.documentStudio .studioRich,.documentStudio .studioSource,.documentStudio .studioProof{flex:1;min-height:0;overflow:auto}
+.documentStudio .studioFoot{flex:none}
+.documentStudio .toastui-editor-contents :is(h1,h2){font-family:inherit;letter-spacing:-.02em;border-bottom:0}
+.documentStudio .toastui-editor-contents h1{font-size:24px;line-height:1.5}
+.documentStudio .toastui-editor-contents h2{font-size:21px;line-height:1.5}
+.citationSearch{display:flex;gap:8px;margin:8px 0 12px}
+.citationSearch input{flex:1;min-width:0;padding:10px;border:1px solid var(--line);background:var(--paper);color:var(--text);border-radius:6px}
+.citationHint{font-size:12px;color:var(--soft)}
+.citationResults{max-height:50vh;overflow:auto}
+.citationResults>button{display:block;width:100%;padding:12px;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text)}
+.citationResults>button:hover{background:var(--paper)}
+.citationResults strong,.citationResults small{display:block;line-height:1.6}
+.citationResults strong{font-weight:500}.citationResults small{color:var(--soft);font-size:12px;margin-top:3px}
+@media(max-width:700px){#reader:has(.wholeDocument){padding:8px}#reader>.wholeDocument{padding:14px 16px}.documentTitle h1{font-size:17px}.documentStudio .studioCommands{flex-wrap:wrap}}
+
+#reader .documentTitle{display:block;text-align:left;border:0;padding:0;min-height:0}
+.documentStudio .toastui-editor-contents> :first-child{margin-top:0}
+.documentStudio .ProseMirror{padding-top:24px}
+
+/* Selection actions float outside document flow and leave the native selection intact. */
+.inlineStudio .studioSelection{position:fixed;z-index:100;gap:2px;padding:4px;border:1px solid var(--line);border-radius:var(--ms-panel-radius);background:var(--ui);color:var(--text);box-shadow:var(--ms-panel-shadow);max-width:calc(100vw - 16px);isolation:isolate;animation:msReveal var(--ms-motion-reveal) var(--ms-ease-out)}
+.inlineStudio .studioSelection button{padding:4px clamp(5px,2vw,10px);min-height:var(--ms-control-height);border:1px solid transparent;background:transparent;font:13px/1.4 system-ui;border-radius:var(--ms-control-radius);white-space:nowrap}
+.inlineStudio .studioSelection button:hover{background:var(--paper)}
+.inlineStudio .studioSelection button:focus-visible{outline:2px solid var(--ms-focus);outline-offset:-2px}
+
+/* Reading width and typography stay stable across the full-document modes. */
+#reader:has(.wholeDocument){padding:12px 24px 16px;background:var(--ui)}
+#reader>.wholeDocument{max-width:960px;padding:12px 24px 8px;border:0;background:var(--ui)}
+#reader .documentTitle{margin:0 0 8px}
+.documentTitle small{display:none}
+.documentTitle h1{font-size:17px;font-weight:500;line-height:1.5;margin:0;letter-spacing:0}
+.documentStudio .studioTools{padding:6px 0 10px;border-bottom-color:color-mix(in srgb,var(--line) 55%,transparent)}
+.documentStudio .studioFoot{border-top-color:color-mix(in srgb,var(--line) 40%,transparent);padding-top:7px;font-size:11px}
+#reader .documentStudio .ProseMirror,#reader .documentStudio .studioProof{max-width:var(--ms-prose-width);margin:0 auto;width:100%;padding:22px 8px 80px;font-size:16px;line-height:var(--ms-prose-leading);scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--soft) 35%,transparent) transparent;scroll-padding-block:24px}
+#reader .documentStudio .studioSource{padding:22px max(8px,calc((100% - var(--ms-prose-width) + 16px)/2)) 80px;font-size:14px;line-height:var(--ms-prose-leading);scrollbar-width:thin;scroll-padding-block:24px}
+#reader .documentStudio .toastui-editor-contents p{line-height:1.75}
+#reader .documentStudio .toastui-editor-contents :is(h1,h2,h3),#reader .documentStudio .studioProof :is(h1,h2,h3){line-height:1.45;letter-spacing:-.015em;border:0;padding:0;font-weight:600}
+#reader .documentStudio .toastui-editor-contents h1,#reader .documentStudio .studioProof h1{font-size:23px;margin:1.5em 0 .7em}
+#reader .documentStudio .toastui-editor-contents h2,#reader .documentStudio .studioProof h2{font-size:20px;margin:1.4em 0 .6em}
+#reader .documentStudio .toastui-editor-contents h3,#reader .documentStudio .studioProof h3{font-size:18px;margin:1.25em 0 .6em}
+#reader .documentStudio .ProseMirror>:first-child,#reader .documentStudio .studioProof>:first-child{margin-top:0}
+.documentStudio .studioProof p{margin:0 0 1em}
+#reader .documentStudio .studioBibliography:not(:empty){padding-block:24px 4px;line-height:1.75;user-select:text}
+#reader .documentStudio .studioBibliography h3{margin:0 0 12px;font-size:18px;line-height:1.45;font-weight:600}
+#reader .documentStudio .studioBibliography p{margin:0 0 8px}
+.studioBibliography .bibEntry{font:inherit;white-space:normal}
+@media(max-width:700px){#reader:has(.wholeDocument){padding:8px 6px}#reader>.wholeDocument{padding:8px 12px}.documentTitle h1{font-size:16px}#reader .documentStudio .ProseMirror,#reader .documentStudio .studioProof{padding:16px 4px 60px}}
+
+/* Hide the toolbar's wrapper too: its vendor height otherwise leaves a blank 46px row. */
+.inlineStudio:not(.format-open) .toastui-editor-toolbar{display:none}
+.inlineStudio.format-open .toastui-editor-toolbar{height:auto;flex:none}
+
+/* Version-bound references and manuscript margin notes. */
+.draftReferences{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 5px}.draftReferences:empty{display:none}
+.draftRef{display:inline-flex;align-items:center;max-width:100%;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--text);font:12px/1.6 ui-monospace,monospace;margin:2px 0}
+.draftRef button{border:0;background:none;color:inherit;font:inherit;padding:4px 6px;overflow:hidden;text-overflow:ellipsis}.draftRef small{font:11px system-ui;color:var(--soft)}
+.draftSnapshot{width:100%;height:55vh;font:14px/1.8 ui-monospace,monospace}
+.annotatedBody{display:flex;flex:1;min-height:0;gap:16px;container-type:inline-size}.annotatedSurfaces{display:flex;flex-direction:column;flex:1;min-width:0;min-height:0}
+[data-note-kind=comment]{--note-ink:var(--ms-note-comment-ink);--note-fill:var(--ms-note-comment-fill);--note-mark:var(--ms-note-comment-mark)}
+[data-note-kind=highlight]{--note-ink:var(--ms-note-highlight-ink);--note-fill:var(--ms-note-highlight-fill);--note-mark:var(--ms-note-highlight-mark)}
+[data-note-kind=question]{--note-ink:var(--ms-note-question-ink);--note-fill:var(--ms-note-question-fill);--note-mark:var(--ms-note-question-mark)}
+.draftNotes{display:none;position:relative;flex:0 0 190px;min-width:0;min-height:0;grid-template-rows:auto minmax(0,1fr) auto}
+.has-notes>.draftNotes{display:grid}
+.draftNoteCards{grid-row:2;overflow:auto;overflow-anchor:none;overscroll-behavior:contain;padding:0 4px 8px;scrollbar-width:thin}
+.draftPointerSlot{position:relative;min-width:0;margin-inline:4px}
+.draftPointerSlot[data-direction=above]{grid-row:1;margin-bottom:4px}
+.draftPointerSlot[data-direction=below]{grid-row:3;margin-top:4px}
+.draftPointerPreview{display:flex;align-items:start;gap:2px;border-radius:var(--ms-control-radius);background:var(--note-fill)}
+.draftNotePointer.msControl,.draftPointerItem.msControl{display:grid;min-width:0;gap:2px;padding:4px 6px;text-align:start;color:var(--text);font-size:12px}
+.draftNotePointer.msControl{flex:1;width:0}
+.draftPointerHeading{display:flex;align-items:baseline;gap:4px;min-width:0}
+.draftPointerArrow,.draftPointerCount,.draftNoteKind,.draftReplyLabel{color:var(--note-ink);font-weight:600}
+.draftPointerArrow,.draftNoteKind{white-space:nowrap}
+.draftPointerCount{font-variant-numeric:tabular-nums}
+.draftPointerSlot[data-mixed] .draftPointerCount{color:var(--text)}
+.draftPointerChapter,.draftPointerExcerpt{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.draftPointerChapter{font-weight:500}
+.draftPointerExcerpt{color:var(--text)}
+.draftPointerMore{flex:none}
+.draftPointerMore>summary{min-block-size:28px;list-style:none;padding:3px 4px;font-size:12px;color:var(--text);cursor:pointer;white-space:nowrap}
+.draftPointerMore>summary::-webkit-details-marker{display:none}
+.draftPointerList{position:absolute;inset-inline:0;z-index:5;display:grid;gap:4px;padding:4px;max-height:min(240px,30dvh);overflow:auto;border:1px solid var(--line);border-radius:var(--ms-panel-radius);background:var(--ui);box-shadow:var(--ms-panel-shadow)}
+.draftPointerSlot[data-direction=above] .draftPointerList{top:calc(100% + 4px)}
+.draftPointerSlot[data-direction=below] .draftPointerList{bottom:calc(100% + 4px)}
+.draftPointerItem.msControl{background:var(--note-fill)}
+.draftPointerPreview .msControl:not(:disabled):hover,.draftPointerList .draftPointerItem.msControl:hover{background:var(--note-mark)}
+.draftPointerSlot[hidden],.draftPointerMore[hidden],.draftNote[hidden]{display:none}
+.draftTextareaMirror{position:fixed;left:-100000px;top:0;box-sizing:border-box;white-space:pre-wrap;overflow-wrap:break-word;visibility:hidden;pointer-events:none}
+#reader>.wholeDocument:has(.has-notes){max-width:1220px}
+.draftNote{border-inline-end:2px solid var(--note-ink);background:var(--note-fill);padding:8px 10px;border-radius:4px 0 0 4px;overflow-wrap:anywhere}
+.draftNote>.draftNoteKind,.draftReplyLabel{display:block;margin-bottom:2px;font-size:11px}
+.draftNoteText{display:block;width:100%;text-align:left;border:0;padding:0;background:none;color:var(--text);font:13px/1.65 system-ui;white-space:pre-wrap;cursor:text}
+.draftNoteMeta{display:flex;gap:8px;justify-content:space-between;margin-top:7px;color:var(--soft);font:11px/1.5 system-ui}.draftNoteMeta time{font:inherit}
+.draftNoteLocate{font:11px/1.5 system-ui!important;color:var(--soft);background:none;border:0;padding:4px 0 0;text-align:left}
+.draftNote textarea{width:100%;box-sizing:border-box;padding:4px;border:0;background:transparent;color:var(--text);font:13px/1.65 system-ui;resize:vertical;min-height:75px}
+.draftNoteActions{display:flex;gap:8px;margin-top:4px}.draftNoteActions button{font-size:12px;padding:3px 8px;border:1px solid var(--line);background:var(--ui);color:var(--text);border-radius:4px}.draftNote [role=status]{font:12px/1.5 system-ui;color:var(--soft)}
+@container (max-width:620px){.has-notes>.draftNotes{flex-basis:160px}.draftNote{padding:8px}.draftNoteMeta{display:block}.draftNoteMeta time{display:block}}
+@media(max-width:650px){.annotatedBody.has-notes{gap:8px}.has-notes>.draftNotes{flex-basis:125px}.draftNoteMeta{display:flex}.draftNoteMeta time{display:inline}}
+/* Markdown remains the document; preview only changes its presentation. */
+.studioRich:has(.cm-editor){display:flex;min-height:0;overflow:hidden}.studioRich[hidden]{display:none}
+.studioRich .cm-editor{height:100%;width:100%;min-height:0;color:var(--text);background:var(--ui);outline:none}
+.studioRich .cm-scroller{overflow:auto;font:16px/var(--ms-prose-leading) -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;scrollbar-width:thin;scroll-padding:32px}
+.studioRich .cm-content{max-width:var(--ms-prose-width);min-height:100%;margin:auto;padding:22px 8px 90px;caret-color:var(--text)}
+.studioRich .cm-line{padding:0 2px}.studioRich .cm-activeLine{background:transparent}.studioRich .cm-cursor{border-left-color:var(--text)}
+.studioRich .cm-focused .cm-selectionBackground,.studioRich .cm-selectionBackground{background:color-mix(in srgb,#6aa6df 30%,transparent)!important}
+.ms-heading{font-weight:600;line-height:1.5;padding-top:16px!important;padding-bottom:8px!important}.ms-h1{font-size:24px}.ms-h2{font-size:21px}.ms-h3{font-size:18px}
+.ms-strong{font-weight:650}.ms-emphasis{font-style:italic}.ms-strike{text-decoration:line-through}.ms-code{font: .9em ui-monospace,monospace;background:var(--paper);border-radius:3px}.ms-link{color:var(--pick);text-decoration:underline}.ms-quote{border-left:2px solid var(--line);padding-left:14px!important;color:var(--soft)}
+.ms-preview{cursor:text}.ms-block{display:block;padding:8px 0}.ms-block pre{background:var(--paper);padding:12px;overflow:auto}.ms-block table{border-collapse:collapse;width:100%}.ms-block td,.ms-block th{padding:6px 10px;border:1px solid var(--line)}.ms-math math{font-size:1.1em}.ms-note-highlight{background:color-mix(in srgb,#e8bc48 28%,transparent)}
+.draftNoteActions{flex-wrap:wrap;gap:4px}.draftNoteActions button{border:0;background:transparent;color:var(--soft);padding:3px 5px;font-size:11px}.draftNoteActions button:hover{background:var(--paper);color:var(--text)}.draftNote.highlightOnly{padding:5px 8px}.highlightOnly .draftNoteMeta{display:none}.highlightOnly .draftNoteText{font-size:12px;color:var(--soft)}
+.draftNote textarea:focus{outline:none}.draftNote [role=status]{display:block;font-size:11px}.exportNotes{display:flex;align-items:center;gap:7px}
+@media(max-width:650px){.studioRich .cm-scroller{font-size:15px}}
+.studioRich .ms-heading,.studioRich .ms-heading span{text-decoration:none!important}
+
+/* A short annotation edit has an obvious end; the margin card stays readable. */
+#reader .draftNoteEditor{position:fixed;z-index:110;width:min(380px,calc(100vw - 24px));max-width:none;margin:0;padding:16px;border:1px solid var(--line);border-radius:var(--ms-panel-radius);background:var(--ui);color:var(--text);box-shadow:var(--ms-panel-shadow);overflow:auto;animation:msReveal var(--ms-motion-reveal) var(--ms-ease-out)}
+.draftNoteEditor blockquote{margin:0 0 12px;padding:0 0 0 10px;border-inline-start:3px solid var(--note-ink);color:var(--text);font:12px/1.6 system-ui;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;white-space:pre-wrap}
+.draftNoteEditor textarea{display:block;width:100%;min-height:108px;max-height:40vh;resize:vertical;border:1px solid var(--line);border-radius:7px;padding:10px;background:var(--paper);color:var(--text);font:14px/1.65 system-ui}
+.draftNoteEditor textarea:focus{outline:2px solid color-mix(in srgb,var(--pick) 70%,transparent);outline-offset:1px}
+.draftNoteEditorFoot{display:flex;gap:12px;align-items:center;margin:10px 0 4px}.draftNoteEditorFoot [role=status]{flex:1;min-width:0;font:12px/1.5 system-ui;color:var(--soft)}
+.draftNoteEditor .draftNoteActions{border-top:1px solid var(--line);padding-top:8px;margin-top:10px}.draftNoteEditor .draftNoteActions button{font-size:12px;min-height:28px}
+
+/* Search and heading rows shared by the inline and floating directories. */
+.tocHead{display:flex;align-items:center;gap:4px;margin-bottom:10px}.tocHead strong{flex:1;font:600 13px/1.5 system-ui}.tocHead button{border:0;background:none;font:11px/1.5 system-ui;padding:4px 5px;color:var(--soft)}.tocHead [aria-pressed=true]{color:var(--text);background:var(--paper)}
+.tocPanel input{width:100%;flex:none;padding:7px 9px;font:12px/1.5 system-ui;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--text);margin-bottom:8px}
+.tocList{overflow:auto;min-height:0;scrollbar-width:thin;overscroll-behavior:contain}.tocItem{display:flex;align-items:flex-start;padding-left:calc(var(--depth)*10px);border-radius:5px}.tocItem:has(.tocCurrent){background:var(--paper)}
+.tocHeading{flex:1;min-width:0;padding:6px 4px;border:0;border-radius:3px;background:transparent;color:var(--soft);font:12px/1.5 system-ui;text-align:left;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tocHeading.tocCurrent{color:var(--text);font-weight:600}.tocHeading.tocParent{color:var(--text)}.tocHeading:hover{background:var(--paper);color:var(--text)}
+.tocFold,.tocFoldSpacer{display:block;flex:0 0 22px;width:22px;height:30px;padding:3px;border:0;background:transparent;color:var(--soft);font:16px/24px system-ui}.tocWrap .tocHeading{white-space:normal;overflow-wrap:anywhere}
+.tocIdeaLink{align-self:center;flex:none;padding:3px 5px;border:0;background:transparent;color:var(--soft);font-size:11px;white-space:nowrap}
+.tocIdeaLink:hover,.tocIdeaLink:focus-visible{background:var(--paper);color:var(--text)}
+.tocIdeaChoices{display:grid;gap:6px}.tocIdeaChoices button{text-align:left;overflow-wrap:anywhere}
+.ideaHeadingLink{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px}.ideaHeadingLink small{flex-basis:100%;overflow-wrap:anywhere}
+.headingLinkActions{display:flex;gap:8px}.scholarDialog [data-heading-target]{width:100%;min-width:0}
+.tocEmpty{font-size:12px;color:var(--soft);padding:12px 4px}
+.tocSettings{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}.tocSettings label{display:flex;flex-direction:column;gap:5px;font-size:13px}.tocSettings select{width:100%}
+.manuscriptFigureSetting{display:grid;gap:4px;justify-items:start;padding-bottom:12px;border-bottom:1px solid var(--ms-rule)}
+.manuscriptFigureSetting label{min-width:min(220px,100%)}.manuscriptFigureSetting small{color:var(--ms-muted)}
+.tocPanel button:focus-visible{outline:2px solid var(--pick);outline-offset:-2px}
+@media(max-width:650px){.tocSettings{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#reader .draftNoteEditor{animation:none}}
+
+.msDocumentThumb{display:inline-flex;width:112px;height:68px;max-width:100%;align-items:center;justify-content:center;margin:2px 4px;padding:0;border:1px solid var(--line);border-radius:var(--ms-control-radius);background:var(--paper);color:var(--soft);font-size:12px;cursor:zoom-in;vertical-align:middle}
+.msDocumentThumb img{display:block;width:100%;height:100%;object-fit:contain}
+.msBodyFigure{margin-bottom:0}
+.cm-line.msBodyFigure+.cm-line:has(>br:only-child){line-height:.45}
+.studioProof .msFigureCaption,.cm-line.msFigureCaption{margin-top:0;color:var(--soft);font-size:.92em}
+.msFigureNumber{font-weight:650;color:var(--text)}
+.documentStudio .msFigureReference{appearance:none;padding:0;border:0;background:none;color:var(--selectionAccent,var(--link));font:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em}
+.libList .schFigurePreview{display:flex;width:min(100%,240px);height:128px;align-items:center;justify-content:center;background:var(--paper);color:var(--soft);font-size:12px}
+.libList .schFigurePreview img{display:block;width:100%;height:100%;object-fit:contain}
+
+/* Markdown author colors are scoped to the writing surfaces. Export uses the source only. */
+[data-md-palette] .ms-h1,[data-md-palette] .studioProof h1{--ms-ink:var(--ms-h1)}
+[data-md-palette] .ms-h2,[data-md-palette] .studioProof h2{--ms-ink:var(--ms-h2)}
+[data-md-palette] .ms-h3,[data-md-palette] .studioProof h3{--ms-ink:var(--ms-h3)}
+[data-md-palette] .ms-h4,[data-md-palette] .studioProof h4{--ms-ink:var(--ms-h4)}
+[data-md-palette] .ms-h5,[data-md-palette] .studioProof h5{--ms-ink:var(--ms-h5)}
+[data-md-palette] .ms-h6,[data-md-palette] .studioProof h6{--ms-ink:var(--ms-h6)}
+[data-md-palette] :is(.ms-quote,.studioProof blockquote){--ms-ink:var(--ms-quote)}
+[data-md-palette] :is(.ms-strong,.studioProof strong){--ms-ink:var(--ms-bold)}
+[data-md-palette] :is(.ms-emphasis,.studioProof em){--ms-ink:var(--ms-italic)}
+[data-md-palette] :is(.ms-code,.ms-block code,.studioProof code){--ms-ink:var(--ms-code)}
+[data-md-palette] :is(.ms-link,.ms-preview a,.studioProof a){--ms-ink:var(--ms-link)}
+[data-md-palette] .ms-marker{--ms-ink:var(--ms-marker)}
+[data-md-palette] .studioRich :is(.ms-heading,.ms-quote,.ms-strong,.ms-emphasis,.ms-code,.ms-link,.ms-marker,.ms-preview a,.ms-block code),
+[data-md-palette] .studioRich :is(.ms-heading,.ms-quote,.ms-strong,.ms-emphasis,.ms-code,.ms-link,.ms-marker) span,
+#reader [data-md-palette] .studioProof :is(h1,h2,h3,h4,h5,h6,strong,em,code,a,blockquote){color:var(--ms-ink)}
+[data-md-palette] :is(.ms-markdown-highlight,.studioProof mark){background:var(--ms-highlight);color:var(--text)}
+.msSourceShell{position:relative;flex:1;min-width:0;min-height:0;width:100%}
+.msSourceShell[hidden]{display:none!important}
+.msSourceInk{position:absolute;inset:0;box-sizing:border-box;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word;tab-size:2;pointer-events:none;text-align:start;color:var(--text)}
+#reader .msSourceShell .studioSource{position:absolute;inset:0;box-sizing:border-box;width:100%;height:100%;margin:0;resize:none;background:transparent;color:transparent;caret-color:var(--text);white-space:pre-wrap;overflow-wrap:break-word}
+#reader .msSourceShell.composing .studioSource{color:var(--text);background:var(--ui)}.msSourceShell.composing .msSourceInk{visibility:hidden}
+@media(forced-colors:active){#reader .msSourceShell .studioSource{color:CanvasText;background:Canvas}.msSourceInk{display:none}}
+.writingDialog:has(.msPrefs){max-width: min(92vw,520px)}.msPrefs{display:grid;gap:8px}.msPrefs h3,.msPrefs p{margin:4px 0 0}.msThemeActions,.msThemeSample{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.msThemeFile{display:flex!important;align-items:center;gap:6px}.msThemeFile input{max-width:170px}.msThemeSample{border-block:1px solid var(--line);padding:10px 0}.msThemeSample b{color:var(--ms-h1)}.msThemeSample strong{color:var(--ms-bold)}.msThemeSample em{color:var(--ms-italic)}.msThemeSample code{color:var(--ms-code)}
+.msKeyRows>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid var(--line)}.msKeyRows button{font:12px ui-monospace,monospace;min-width:88px}.msPrefs>button{justify-self:start}
+.draftNote[data-question] .draftNoteText{cursor:pointer;font-weight:600}
+.questionAnswer p{margin:5px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.6}
+.qaExcerptTools[hidden],.questionAnswer[hidden]{display:none}
+.qaReplyFocus{outline:2px solid var(--accent,Highlight);outline-offset:-2px}
+
+.draftNote[data-question] .draftNoteText{font-size:12px;font-weight:400;color:var(--text)}
+.questionAnswer p{font-size:14px;color:var(--text)}
+
+.ms-note-highlight,.draftSnapshotText .draftSnapshotAnchor[data-note-kind]{background-color:var(--note-mark)}
+.ms-note-highlight:not([data-note-active]) .ms-note-highlight:not([data-note-active]),
+.ms-note-highlight[data-note-active] .ms-note-highlight{background-color:transparent}
+[data-note-outline] .ms-note-highlight[data-note-kind]{background-color:transparent;text-decoration:underline;text-decoration-color:var(--note-ink);text-underline-offset:.2em}
+[data-note-outline] .ms-note-highlight:not([data-note-active]) .ms-note-highlight:not([data-note-active]),
+[data-note-outline] .ms-note-highlight[data-note-active] .ms-note-highlight{text-decoration:none}
+
+::highlight(draft-comment){background-color:var(--ms-note-comment-mark)}
+::highlight(draft-comment-active){background-color:var(--ms-note-comment-mark)}
+::highlight(draft-highlight){background-color:var(--ms-note-highlight-mark)}
+::highlight(draft-highlight-active){background-color:var(--ms-note-highlight-mark)}
+::highlight(draft-question){background-color:var(--ms-note-question-mark)}
+::highlight(draft-question-active){background-color:var(--ms-note-question-mark)}
+[data-note-outline] ::highlight(draft-comment){background-color:transparent;text-decoration:underline var(--ms-note-comment-ink)}
+[data-note-outline] ::highlight(draft-comment-active){background-color:transparent;text-decoration:underline var(--ms-note-comment-ink)}
+[data-note-outline] ::highlight(draft-highlight){background-color:transparent;text-decoration:underline var(--ms-note-highlight-ink)}
+[data-note-outline] ::highlight(draft-highlight-active){background-color:transparent;text-decoration:underline var(--ms-note-highlight-ink)}
+[data-note-outline] ::highlight(draft-question){background-color:transparent;text-decoration:underline var(--ms-note-question-ink)}
+[data-note-outline] ::highlight(draft-question-active){background-color:transparent;text-decoration:underline var(--ms-note-question-ink)}
+.manuscriptRecoveryFiles code{display:block;overflow-wrap:anywhere}
+.manuscriptRecoveryFiles code[hidden]{display:none}
+[data-import-diff]{max-height:45vh;overflow:auto;overscroll-behavior:contain;border:1px solid var(--line);border-radius:5px;padding:10px}
+[data-import-diff] section+section{margin-block-start:12px;padding-block-start:8px;border-top:1px solid var(--line)}
+[data-import-diff] pre{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}
+[data-import-diff] ins{background:rgba(61,150,105,.21);text-decoration:underline}
+[data-import-diff] del{background:rgba(190,84,77,.21)}

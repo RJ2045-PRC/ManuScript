@@ -1,0 +1,42 @@
+<svg aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 569" role="img">
+  <title id="title">稿件流转 · 从起草到留版</title>
+  <desc id="desc">三种起稿方式汇入工作稿。工作稿自动保存。作者显式留版后，首次或有改动生成编号快照，无变化则保留原编号。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#4d6271" />
+    </marker>
+  </defs>
+  <rect width="480" height="569" rx="12" fill="#fbfaf6" />
+  <text x="18" y="36" fill="#203344" font-size="22" font-weight="700" text-anchor="start" font-family="system-ui, sans-serif">稿件流转 · 从起草到留版</text>
+  <text x="18" y="72" fill="#203344" font-size="15" font-weight="400" text-anchor="start" font-family="system-ui, sans-serif">任选一种方式开始</text>
+  <path d="M83 157 V188 H175 V216" fill="none" stroke="#4d6271" stroke-width="1.7" marker-end="url(#arrow)" />
+  <path d="M238 157 V188 H240 V216" fill="none" stroke="#4d6271" stroke-width="1.7" marker-end="url(#arrow)" />
+  <path d="M395 157 V188 H305 V216" fill="none" stroke="#4d6271" stroke-width="1.7" marker-end="url(#arrow)" />
+  <path d="M240 280 V300.5 H240 V318" fill="none" stroke="#4d6271" stroke-width="1.7" marker-end="url(#arrow)" />
+  <path d="M240 382 V416.5 H125 V448" fill="none" stroke="#4d6271" stroke-width="1.7" marker-end="url(#arrow)" />
+  <text x="125.0" y="408.5" fill="#203344" font-size="14" font-weight="600" text-anchor="middle" font-family="system-ui, sans-serif">首次或有改动</text>
+  <path d="M240 382 V416.5 H355 V448" fill="none" stroke="#4d6271" stroke-width="1.7" marker-end="url(#arrow)" />
+  <text x="355.0" y="408.5" fill="#203344" font-size="14" font-weight="600" text-anchor="middle" font-family="system-ui, sans-serif">无变化</text>
+  <rect x="163" y="96" width="150" height="61" rx="8" fill="#eff7fa" stroke="#398091" stroke-width="1.4" />
+  <text x="238.0" y="121" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">从构思卡起草</text>
+  <text x="238.0" y="143" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">选卡、排序，写下简述</text>
+  <rect x="12" y="96" width="142" height="61" rx="8" fill="#eff7fa" stroke="#398091" stroke-width="1.4" />
+  <text x="83.0" y="121" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">从空白稿开始</text>
+  <text x="83.0" y="143" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">直接写下第一段</text>
+  <rect x="322" y="96" width="146" height="61" rx="8" fill="#eff7fa" stroke="#398091" stroke-width="1.4" />
+  <text x="395.0" y="121" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">导入已有稿</text>
+  <text x="395.0" y="143" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">导入的章节可继续编辑</text>
+  <rect x="140" y="219" width="200" height="61" rx="8" fill="#e5f4ed" stroke="#297455" stroke-width="1.4" />
+  <text x="240.0" y="244" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">编辑工作稿</text>
+  <text x="240.0" y="266" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">修改会自动保存</text>
+  <rect x="140" y="321" width="200" height="61" rx="8" fill="#eff7fa" stroke="#398091" stroke-width="1.4" />
+  <text x="240.0" y="346" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">点击「保存 Draft」</text>
+  <text x="240.0" y="368" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">作者决定何时留版</text>
+  <rect x="25" y="451" width="200" height="61" rx="8" fill="#f0ecfa" stroke="#72549b" stroke-width="1.4" />
+  <text x="125.0" y="476" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">留下编号快照</text>
+  <text x="125.0" y="498" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">点版本号可只读回看</text>
+  <rect x="255" y="451" width="200" height="61" rx="8" fill="#f0ecfa" stroke="#72549b" stroke-width="1.4" />
+  <text x="355.0" y="476" fill="#203344" font-size="16" font-weight="650" text-anchor="middle" font-family="system-ui, sans-serif">保留原编号</text>
+  <text x="355.0" y="498" fill="#203344" font-size="12.5" font-weight="400" text-anchor="middle" font-family="system-ui, sans-serif">已有快照，内容也相同</text>
+  <text x="18" y="550" fill="#203344" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, sans-serif">制图使用 Archify 3.2.0（tt-a1i）</text>
+</svg>

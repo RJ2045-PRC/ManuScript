@@ -1,0 +1,202 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20role%3D%22img%22%20aria-label%3D%22ManuScript%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%23193F3A%22%2F%3E%3Csvg%20x%3D%226%22%20y%3D%225%22%20width%3D%2252%22%20height%3D%2252%22%20color%3D%22%23FFF5DB%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.85%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%3Cpath%20d%3D%22M3%2018.5%205.4%205.5%2011%2014.1%2020.4%205.5%2018.6%2015.4%22%2F%3E%0A%20%20%3Cpath%20class%3D%22ms-nib%22%20style%3D%22color%3A%23E9B967%22%20d%3D%22M15%2019.1c2.1-.1%204.1-1.1%206-3.1-.6%202.8-2.8%204.2-6%203.1Z%22%20fill%3D%22currentColor%22%20stroke-width%3D%221.25%22%2F%3E%0A%3C%2Fsvg%3E%3C%2Fsvg%3E"><title>ManuScript · 论文工作台</title><style>/*STYLE*/
+dialog.msGuide{box-sizing:border-box;color-scheme:light dark;--mg-ink:light-dark(#193e33,#e3f1e8);--mg-sub:light-dark(#405c50,#bfd1c6);--mg-paper:light-dark(#fffdf7,#202c26);--mg-rule:light-dark(#d2ddd1,#45584b);--mg-soft:light-dark(#eff4eb,#2c3b32);background:var(--mg-paper);color:var(--mg-ink);width:min(860px,96vw);max-width:96vw;max-height:90vh;padding:0;border:1px solid var(--mg-rule);border-radius:13px;font:16px/1.55 system-ui,sans-serif;position:fixed;margin:auto;inset:0;overflow:hidden}
+.msGuide::backdrop{background:#18271e66}.msGuide .mgHead,.msGuide nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.msGuide .mgHead{justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--mg-rule)}.msGuide .mgBody{padding:12px 16px;box-sizing:border-box;overflow:auto;max-height:calc(90vh - 62px);overflow-wrap:anywhere}.msGuide nav{position:static;margin:.65em 0;background:var(--mg-paper);padding:0}.msGuide :is(button,select){font:inherit;font-size:.88em;padding:5px 9px;min-height:34px;border:1px solid var(--mg-rule);background:var(--mg-paper);color:var(--mg-ink);border-radius:6px;cursor:pointer}.msGuide nav label{margin-left:auto}.msGuide button[aria-pressed=true]{background:var(--mg-ink);color:var(--mg-paper)}.msGuide small,.msGuide footer,.msGuide figcaption{display:block;color:var(--mg-sub);font-size:.85em}.msGuide .mgPair span{display:block}.msGuide[data-lang=zh] [lang=en],.msGuide[data-lang=en] [lang=zh-CN],.msGuide [hidden]{display:none!important}.msGuide[data-lang=bi] [lang=en]{color:var(--mg-sub)}.msGuide h3{font-size:1.08em;margin:.35em 0}.msGuide .mgGist,.msGuide [data-gr]{border-top:1px solid var(--mg-rule);padding:.7em 0}.msGuide summary{cursor:pointer;padding:.55em 0}.msGuide .mgRow summary .mgPair{display:inline-block;vertical-align:top}.msGuide .mgRow{border-left:3px solid var(--mg-rule);margin:.45em 0;padding-left:.8em}.msGuide .mgHyp{border-left-style:dashed}.msGuide .mgOriginal{padding:.6em;background:var(--mg-soft);margin:.4em 0}.msGuide .mgActive{outline:2px solid var(--mg-ink)}.msGuide figure{margin:0}.msGuide img{height:auto;max-width:100%;display:block}.msGuide footer{position:static;margin:1em 0 0;border-top:1px solid var(--mg-rule);padding:.5em 0}.msGuide p:empty{display:none}
+.msGuide .mgRoutes,.msGuide .mgTiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.5rem;margin:.5rem 0 1rem}.msGuide .mgEntry,.msGuide .mgTiles button{text-align:left;padding:.65rem}.msGuide .mgEntry small{margin-top:.25rem}.msGuide .mgActions{display:flex;flex-wrap:wrap;gap:.45rem;margin:.7rem 0}.msGuide .mgPass,.msGuide .mgCategory{border-bottom:1px solid var(--mg-rule);padding:.25rem 0}.msGuide .mgPass summary .mgPair{margin-left:1rem}.msGuide .mgPass[open]>:not(summary){margin:.8rem}.msGuide .mgPass[open]>div.mgPair{border-left:3px solid var(--mg-rule);padding-left:.8rem}.msGuide .mgPass[open]>.mgPair span+span{margin-top:.45rem}.msGuide .mgSource{white-space:pre-line}.msGuide .mgThesis{padding:.75rem;background:var(--mg-soft);margin:.6rem 0}.msGuide canvas{max-width:100%;height:auto}.msGuide .mgContent h2{font-size:1.18rem}
+.msGuide .mgHit{padding:.6rem .8rem;border-left:4px solid #8b690a;background:light-dark(#fff0b8,#493d16);color:inherit}
+
+:root {
+  --ms-ink: var(--text, var(--fg));
+  --ms-muted: var(--soft, var(--muted));
+  --ms-surface: var(--ui, var(--card));
+  --ms-rule: var(--line, var(--rule));
+  --ms-wash: var(--paper, var(--bg));
+  --ms-focus: light-dark(#315e52, #a5d4c3);
+  --ms-error: light-dark(#963e36, #f0aaa1);
+  --ms-active: color-mix(in srgb, var(--ms-focus) 10%, var(--ms-surface));
+  --ms-note-comment-ink: light-dark(#783B76, #DBA9DB);
+  --ms-note-comment-fill: light-dark(#F7EFF7, #302735);
+  --ms-note-comment-mark: light-dark(#F0E1F1, #412D44);
+  --ms-note-highlight-ink: light-dark(#815500, #E6C475);
+  --ms-note-highlight-fill: light-dark(#FBF5E6, #302A20);
+  --ms-note-highlight-mark: light-dark(#F9E9AF, #443820);
+  --ms-note-question-ink: light-dark(#315F91, #9EBFF0);
+  --ms-note-question-fill: light-dark(#EEF4FB, #243043);
+  --ms-note-question-mark: light-dark(#DFEBF9, #2D4059);
+  --ms-control-height: 32px;
+  --ms-control-radius: 5px;
+  --ms-panel-radius: 8px;
+  --ms-panel-shadow: 0 6px 24px #111b1b24;
+  --ms-prose-width: 740px;
+  --ms-prose-leading: 1.75;
+  --ms-motion-feedback: 100ms;
+  --ms-motion-reveal: 150ms;
+  --ms-motion-layout: 150ms;
+  --ms-ease-out: cubic-bezier(.2, .65, .3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ms-motion-feedback: 0ms;
+    --ms-motion-reveal: 0ms;
+    --ms-motion-layout: 0ms;
+  }
+}
+
+:where(button, summary, select, input, textarea, a[href]):focus-visible {
+  outline: 2px solid var(--ms-focus);
+  outline-offset: 2px;
+}
+
+.msControl {
+  min-block-size: var(--ms-control-height);
+  min-inline-size: 24px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--ms-control-radius);
+  background: transparent;
+  color: var(--ms-ink);
+  font: 500 13px/1.4 system-ui, sans-serif;
+  transition: background-color var(--ms-motion-feedback), border-color var(--ms-motion-feedback);
+}
+
+.msControl:not(:disabled):hover { background: var(--ms-wash); border-color: transparent; }
+.msControl:not(:disabled):active,
+.msControl[aria-pressed=true] { background: var(--ms-active); border-color: var(--ms-focus); }
+.msControl:focus-visible { outline-color: var(--ms-focus); }
+.msControl:disabled { opacity: .48; }
+
+.msControl[data-control=commit] {
+  background: var(--ms-ink);
+  color: var(--ms-surface);
+}
+.msControl[data-control=commit]:not(:disabled):hover {
+  background: color-mix(in srgb, var(--ms-ink) 88%, var(--ms-surface));
+}
+.msControl[data-control=source] {
+  padding-inline: 4px;
+  color: var(--ms-focus);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+@keyframes msReveal {
+  from { opacity: .98; translate: 0 2px; }
+  to { opacity: 1; translate: 0 0; }
+}
+</style>
+<header><b class="ms-lockup" style="display:inline-flex;align-items:center;gap:.32em;white-space:nowrap"><svg width="1.25em" height="1.25em" aria-hidden="true" style="display:block;flex:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 18.5 5.4 5.5 11 14.1 20.4 5.5 18.6 15.4"/>
+  <path class="ms-nib" d="M15 19.1c2.1-.1 4.1-1.1 6-3.1-.6 2.8-2.8 4.2-6 3.1Z" fill="currentColor" stroke-width="1.25"/>
+</svg>ManuScript</b><select aria-label="选择论文项目" id="projects"></select><button data-act="create">新建项目</button><button data-act="example">载入杯盖与降温示例</button><button data-act="unpack">恢复项目包</button><button id="openTeam" hidden>项目地图与团队</button><button data-act="full" title="放大工作台">全屏</button></header>
+<nav id="tabs"></nav><div role="status" id="notice"></div><main id="view"></main><dialog id="modal"><form method="dialog" id="form"><h2 id="mt"></h2><div id="fields"></div><footer><button value="cancel" type="button" id="cancel">取消</button><button class="primary" type="submit">确定</button></footer></form></dialog>
+<script>/*CONFIG*/
+// Shared by the manuscript and project settings page. Preferences never edit a draft.
+window.ManuscriptScaleSettings={
+ defaults:{logicStyle:'symbols'},
+ options:[['symbols','文字＋符号简图'],['visual','文字＋可视简图']],
+ label:value=>value==='visual'?'文字＋可视简图':'文字＋符号简图'
+};
+window.ManuscriptFigureSettings=(()=>{
+ const labels={zh:'图',fig:'Fig.',figure:'Figure'};
+ const label=(style,number)=>(Object.hasOwn(labels,style)?labels[style]:labels.zh)+' '+number;
+ return {style:value=>Object.hasOwn(labels,value)?value:'zh',label,options:Object.keys(labels).map(key=>[key,label(key,1)])};
+})();
+window.ManuscriptTocSettings=(()=>{
+ const defaults={enabled:true,side:'left',maxDepth:6,collapseDepth:2,pinned:false,hover:false,tooltip:true,wrap:false,hideFirst:false,progress:true,barWidth:32};
+ const bool=[['true','开启'],['false','关闭']],depth=Array.from({length:6},(_,i)=>[String(i+1),'H'+(i+1)]);
+ const definitions=[['enabled','正文目录',bool],['maxDepth','目录列表显示到哪一级',depth],['collapseDepth','初始展开到哪一级',depth],['tooltip','显示标题提示',bool],['wrap','长标题换行',bool],['hideFirst','隐藏首个一级标题',bool]];
+ return {defaults,fields:values=>definitions.map(([key,label,options])=>[key,label,'select',String(({...defaults,...values})[key]),options]),read:values=>Object.fromEntries(definitions.map(([key])=>[key,typeof defaults[key]==='boolean'?values[key]==='true':typeof defaults[key]==='number'?Number(values[key]):values[key]]))}
+})();
+
+/*APP*/
+// Project-backed, edition-pinned reading guides. Content and figure assets travel with the project.
+function openPaperGuide(p,api,detail=false,section=''){
+ if(p.readingGuide?.article && !detail)return openWholePaper(p,api,section)
+ const g=p.readingGuide,ref=p.references?.[g?.key],ed=ref?.editions.find(x=>x.sha===g.sha)
+ const d=document.createElement('dialog');d.className='msGuide';document.body.append(d);d.addEventListener('close',()=>d.remove(),{once:true})
+ const h=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+ const btn=(attr,s)=>'<button type="button" '+attr+'>'+h(s)+'</button>'
+ const pair=(z,e)=>'<div class="mgPair"><span lang="zh-CN">'+h(z)+'</span><span lang="en">'+h(e)+'</span></div>'
+ d.innerHTML='<div class="mgHead"><strong>'+h(g?.title||'论文导读')+'</strong>'+btn('data-close','关闭')+'</div><div class="mgBody"></div>';d.querySelector('[data-close]').onclick=()=>d.close();d.showModal()
+ const body=d.querySelector('.mgBody');if(!ed){body.textContent='固定版 PDF 不在项目中，无法打开这份导读。';return}
+ const call=(op,args)=>api(op,{project:p.id,...args})
+ const loc=(i,j)=>{const a=g.paras[i];return a.section+' · 第 '+a.para+' 段 · 句 '+(j+1)+' · PDF 第 '+a.page+' 页'}
+ const quote=(i,j)=>'<div class="mgOriginal" data-q="'+i+':'+j+'"><small>'+h(loc(i,j))+'</small>'+pair(g.paras[i].zh[j],g.paras[i].en[j])+'</div>'
+ function pageButtons(n){return btn('data-page="'+n+'"','查看 PDF 第 '+n+' 页')+(ref.zoteroKey?btn('data-zot="'+n+'"','在 Zotero 定位'):'')}
+ const fig=(n)=>{const f=g.figures[n];return '<details class="mgFig" data-fig="'+h(n)+'"><summary>查看论文图 '+h(n)+' · 第 '+h(f.page)+' 页</summary><figure><div class="mgImage" role="status"></div><figcaption>'+h(f.caption)+'</figcaption></figure>'+pageButtons(f.page)+'</details>'}
+ const group=(t,i)=>'<section data-gr="'+i+'"><h3>'+h(i+1+'. '+t.title)+'</h3>'+t.rows.map((r,j)=>'<details class="mgRow '+(r.tag.includes('假设')?'mgHyp':'')+'" data-row="'+i+'-'+j+'"><summary><small>'+h(r.tag)+'</small>'+pair(r.zh,r.en)+'</summary>'+r.loc.map(([a,b])=>quote(a,b)+btn('data-jump="'+a+':'+b+'"','在全文定位此句')).join('')+'</details>').join('')+fig(t.fig)+'</section>'
+ const unchanged=p.blocks?.find(x=>x.id===g.block)?.text===g.paras.map(a=>a.en.join(' ')).join('\n\n')
+ body.innerHTML='<small>'+h(g.publication)+' · §5.1–5.2 · 固定论文导读</small><nav>'+['主线','图解结构','逐句全文','插件摘句'].map((x,i)=>btn('data-v="'+i+'"',x)).join('')+'<label>显示语言 <select aria-label="显示语言"><option value="bi">中英对照</option><option value="zh">只看中文</option><option value="en">只看英文</option></select></label></nav>'+
+ (!unchanged?'<p>当前稿与论文摘录已不同。以下导读及译文对应固定 PDF。</p>':'')+
+ '<section data-pane="0">'+g.groups.map((t,i)=>'<section class="mgGist"><h3>'+h(t.title)+'</h3>'+pair(t.zh,t.en)+btn('data-expand="'+i+'"','展开这条主线 →')+'</section>').join('')+'</section>'+
+ '<section data-pane="1">'+g.groups.map(group).join('')+'</section>'+
+ '<section data-pane="2">'+g.paras.map((a,i)=>'<details data-para="'+i+'" '+(i===0?'open':'')+'><summary>'+h(a.section+' · 第 '+a.para+' 段　｜　'+a.en.length+' 句')+'</summary>'+a.en.map((_,j)=>quote(i,j)).join('')+pageButtons(a.page)+'</details>').join('')+btn('data-return hidden','返回刚才的论证')+'</section>'+
+ '<section data-pane="3"></section><p role="status" class="mgStatus"></p><footer>原文与原图：'+h(g.publication)+' · '+h(g.doi)+' · '+h(g.license)+'。译文与结构为整理稿；图像裁自固定 PDF。</footer>'
+ const msg=body.querySelector('.mgStatus'),sel=body.querySelector('select');let mode=0,origin=null,loaded=false
+ function switchTo(n){mode=n;body.querySelectorAll('[data-pane]').forEach(s=>s.hidden=+s.dataset.pane!==n);body.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.v===n)));msg.textContent='';body.scrollTop=0}
+ function focusAt(el){el.scrollIntoView({block:'nearest'});el.tabIndex=-1;el.focus({preventScroll:true})}
+ const cache=new Map()
+ async function loadFig(details){const f=g.figures[details.dataset.fig],area=details.querySelector('.mgImage');area.textContent='正在读取原图…'
+   try{if(!cache.has(f.asset))cache.set(f.asset,call('file',{asset:f.asset}));const file=await cache.get(f.asset);const img=new Image();img.alt=f.caption;img.src='data:image/jpeg;base64,'+file.data;area.replaceChildren(img)}catch(err){cache.delete(f.asset);area.textContent=err.message}}
+ body.querySelectorAll('.mgFig').forEach(el=>el.addEventListener('toggle',()=>{if(el.open&&!el.querySelector('img'))loadFig(el)}))
+ async function pageView(n){const box=document.createElement('dialog');box.className='msGuide mgPage';box.innerHTML='<div class="mgHead"><strong>固定 PDF · 第 '+n+' 页</strong>'+btn('data-close','返回导读')+'</div><div class="mgBody" role="status">正在读取原页…</div>';document.body.append(box);box.querySelector('button').onclick=()=>box.close();box.onclose=()=>box.remove();box.showModal();const a=box.querySelector('.mgBody')
+   try{const png=await call('source_page',{key:g.key,sha:ed.sha,page:n});if(!box.open)return;const img=new Image();img.alt='论文原页 '+n;img.src='data:image/png;base64,'+png;a.replaceChildren(img)}catch(err){a.textContent=err.message}}
+ body.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset
+  try{if(k.v!==undefined){switchTo(+k.v);if(mode===3&&!loaded){const out=body.querySelector('[data-pane="3"]');if(!unchanged){out.textContent='当前稿已改动；此固定导读不把旧译文套用到新稿。';return}
+     const blk=p.blocks.find(x=>x.id===g.block);const rows=await call('writing_fold',{block:g.block,rev:blk.rev});out.innerHTML='<small>当前插件按段摘取的英文原句</small>'+rows.map((r,i)=>{const j=g.paras[i]?.en.indexOf(r.brief);return j>=0?quote(i,j):'<p lang="en">'+h(r.brief)+'</p>'}).join('');loaded=true}}
+   else if(k.expand!==undefined){switchTo(1);focusAt(body.querySelector('[data-gr="'+k.expand+'"] h3'))}
+   else if(k.jump){origin=b.closest('[data-row]');switchTo(2);const panel=body.querySelector('[data-pane="2"]'),line=panel.querySelector('[data-q="'+k.jump+'"]');line.closest('details').open=true;panel.querySelectorAll('.mgActive').forEach(x=>x.classList.remove('mgActive'));line.classList.add('mgActive');body.querySelector('[data-return]').hidden=false;focusAt(line)}
+   else if('return' in k&&origin){switchTo(1);focusAt(origin.querySelector('summary'))}
+   else if(k.page)await pageView(+k.page)
+   else if(k.zot){await call('open_reference_pdf',{key:g.key,asset:ed.asset,page:+k.zot,target:'zotero'});msg.textContent='已请求 Zotero 打开第 '+k.zot+' 页。'}
+  }catch(err){msg.textContent=err.message}})
+ let store='manuscript:guide-language';try{const old=localStorage.getItem(store);if(['bi','zh','en'].includes(old))sel.value=old}catch{}
+ sel.onchange=()=>{d.dataset.lang=sel.value;try{localStorage.setItem(store,sel.value)}catch{}}
+ d.dataset.lang=sel.value;switchTo(0)
+}
+
+// Full-edition reader; all text and coordinates are tied to the same immutable PDF.
+function openWholePaper(project,api,start=''){
+ const g=project.readingGuide,a=g.article,S=a.sections,F=a.figures,ref=project.references?.[g.key],ed=ref?.editions?.find(e=>e.sha===a.sha)
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+ const btn=(key,val,label)=>'<button type="button" data-'+key+'="'+esc(val)+'">'+esc(label)+'</button>'
+ const bi=(z,e)=>'<div class="mgPair"><span lang="zh-CN">'+esc(z)+'</span><span lang="en">'+esc(e)+'</span></div>'
+ const groups=[
+ ['摘要','Abstract',['abs']],['01 · 引言','Introduction',['1']],['02 · 方法','Methods',S.filter(s=>s.id.startsWith('2.')).map(s=>s.id)],
+ ['03 · 结果','Results',S.filter(s=>s.id.startsWith('3.')).map(s=>s.id)],['04 · 讨论','Discussion',S.filter(s=>s.id.startsWith('4.')).map(s=>s.id)],
+ ['05 · 验证','Validation',S.filter(s=>s.id==='5'||s.id.startsWith('5.')).map(s=>s.id)],
+ ['06 · 结论','Conclusion',['6']],['声明与参考文献','Statements and references',['notes','refs']],['附录','Appendices',['A1','A2','A3','A4']]]
+ const byId=new Map(S.map(s=>[s.id,s])),figLabel=k=>k.startsWith('T')?'表 '+k.slice(1):'图 '+k
+ const d=document.createElement('dialog');d.className='msGuide mgWhole';d.innerHTML='<div class="mgHead"><strong>Sit 2024 · 全文图解</strong>'+btn('close','','关闭')+'</div><div class="mgBody"><small>'+esc(g.publication)+'</small><nav>'+btn('home','','全文主线')+btn('gallery','','图表索引')+btn('pages','','原版逐页')+btn('detail','','§5.1–5.2 逐句精读')+'<label>显示语言 <select aria-label="显示语言"><option value="bi">中英对照</option><option value="zh">只看中文</option><option value="en">只看英文</option></select></label></nav><div class="mgContent"></div><footer>原文与原图：'+esc(g.publication)+' · '+esc(g.doi)+' · '+esc(g.license)+'。中文为导读译述，图表取自固定 PDF。</footer></div>'
+ document.body.append(d);d.addEventListener('close',()=>d.remove(),{once:true});d.showModal()
+ const area=d.querySelector('.mgContent'),body=d.querySelector('.mgBody'),lang=d.querySelector('select')
+ if(!ed){area.textContent='此项目缺少导读对应的固定版 PDF。';d.querySelector('[data-close]').onclick=()=>d.close();return}
+ const target=(s)=>S.indexOf(s),pageBtn=n=>btn('page',n,'PDF 第 '+n+' 页'),view=(markup)=>{area.innerHTML=markup;body.scrollTop=0}
+ const pick=(id)=>{const s=byId.get(id);return '<button class="mgEntry" type="button" data-sec="'+target(s)+'"><small>'+esc(id)+'</small>'+bi(s.zh,s.title)+'</button>'}
+ const routes=[['1','为什么要换试件？','Why change the specimen?','0° 悬垂 → 固态挠曲与液相聚结','0° overhang → solid and liquid mechanisms'],['2.4','怎么筛选参数？','How are settings screened?','薄圆盘 → 只改第 3 层 → 120 组','Thin disks → vary layer 3 → 120 settings'],['3.2','哪些组合能留下？','Which settings survive?','120 → 69 → 36 → 低 Sa 窗口','120 → 69 → 36 → low-Sa window'],['4.1','哪些指标能代替破坏性检查？','Can a surface metric help screen porosity?','圆盘截面孔隙率 ↔ Sa ↔ Ra','Disk porosity ↔ Sa ↔ Ra'],['5.1','圆盘参数能迁移到桥吗？','Do disk settings transfer to bridges?','看跨度 → 查成珠 → 核对 12 mm 桥密度','Compare spans → inspect beads → check density at 12 mm'],['5.4','结论到哪里为止？','Where do the findings stop?','短道迹、复杂几何、刮刀碰撞','Short tracks, complex geometry and recoater collision']]
+ function home(){view('<h2>'+esc(a.title)+'</h2><p lang="en">'+esc(a.paperTitle)+'</p><small>全文 20 页（含封面） · 先按问题进入，或用下方目录按发表顺序阅读。</small><div class="mgRoutes">'+routes.map(([id,z,e,t,u])=>'<button class="mgEntry" data-sec="'+target(byId.get(id))+'">'+bi(z,e)+'<small>'+bi(t,u)+'</small></button>').join('')+'</div><h3>按章节阅读</h3>'+groups.map(([z,e,ids])=>'<details class="mgCategory"><summary>'+esc(z)+' / '+esc(e)+' · '+ids.length+'</summary><div class="mgRoutes">'+ids.map(pick).join('')+'</div></details>').join(''))}
+ const figStrip=keys=>keys.map(k=>'<button data-figure="'+esc(k)+'">'+esc(figLabel(k))+' · '+bi(F[k].caption,F[k].en)+'</button>').join('')
+ let active=null
+ function section(i){const s=S[i];if(!s)return;active=s
+ view('<small>全文主线 / '+esc(s.id)+'</small><h2>'+bi(s.zh,s.title)+'</h2><div class="mgThesis">'+bi(s.gist,s.gistEn)+(s.anchor?btn('locate','','定位关键原句'):'')+'</div><small>点击论证行，展开原段和对应页。'+(s.id==='refs'?'书目信息统一保留原文。':'中文为段落译述；验证节保留原有逐句配对。')+'</small>'+
+ s.parts.map((p,j)=>'<details class="mgPass" data-part="'+j+'"><summary><small>'+esc(p.tag)+' · '+p.pages.map(n=>'p.'+n).join(' / ')+'</small>'+bi(p.zh.split(/(?<=[。！？])/u)[0],p.en.match(/^.*?[.!?](?=\s+[A-Z]|$)/)?.[0]||p.en.slice(0,155))+'</summary>'+
+ (s.id==='refs'?'<div class="mgSource">'+esc(p.en)+'</div>':p.pairs?p.pairs.map(([z,e])=>bi(z,e)).join(''):bi(p.zh,p.en))+
+ '<div class="mgActions">'+p.pages.map(pageBtn).join('')+'</div></details>').join('')+
+ (s.figs.length?'<h3>对应原图与表</h3><div class="mgTiles">'+figStrip(s.figs)+'</div>':'')+
+ (['5.1','5.2'].includes(s.id)?btn('detail','','展开已有的三条主线与逐句定位'):'')+
+ '<div class="mgActions">'+(i>0?btn('sec',i-1,'← 上一节'):'')+(i<S.length-1?btn('sec',i+1,'下一节 →'):'')+btn('home','','回到全文主线')+'</div>')}
+ let lastPage=null,loading=null
+ async function source(n){if(lastPage===n&&loading)return loading;lastPage=n;const promise=api('source_page',{project:project.id,key:g.key,sha:ed.sha,page:n}).then(data=>{const img=new Image();img.src='data:image/png;base64,'+data;return img.decode().then(()=>img)});loading=promise;try{return await promise}catch(e){if(loading===promise)loading=null;throw e}}
+ function pop(n,k){
+ const box=document.createElement('dialog');box.className='msGuide mgPage';document.body.append(box);box.onclose=()=>box.remove();box.showModal();let serial=0
+ async function paint(page,key){const token=++serial,f=F[key];box.innerHTML='<div class="mgHead"><strong>'+esc((f?figLabel(key)+' · ':'固定原文 · ')+'PDF 第 '+page+' 页')+'</strong>'+btn('back','','返回阅读位置')+'</div><div class="mgBody"><div class="mgActions">'+(f?btn('uncrop',page,'看完整原页'):((page>1?btn('turn',page-1,'← 上一页'):'')+(page<a.pages?btn('turn',page+1,'下一页 →'):'')))+'</div><div role="status">正在读取原版 PDF…</div></div>';box.querySelector('[data-back]').onclick=()=>box.close();box.querySelectorAll('[data-turn],[data-uncrop]').forEach(b=>b.onclick=()=>paint(+(b.dataset.turn||b.dataset.uncrop),null))
+ const out=box.querySelector('[role=status]');try{const img=await source(page);if(!box.open||token!==serial)return
+ if(f){const c=document.createElement('canvas'),[x,y,w,h]=f.rect,W=img.naturalWidth,H=img.naturalHeight;c.width=Math.round(w*W);c.height=Math.round(h*H);c.getContext('2d').drawImage(img,x*W,y*H,w*W,h*H,0,0,c.width,c.height);c.setAttribute('role','img');c.setAttribute('aria-label',f.caption);out.replaceChildren(c);const cap=document.createElement('figcaption');cap.innerHTML=bi(f.caption,f.original);out.append(cap)}
+ else{const copy=img.cloneNode();copy.alt='固定论文第 '+page+' 页';out.replaceChildren(copy)}}catch(e){out.textContent=e.message}}
+ paint(n,k)}
+ d.onclick=e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset;if('close'in k)d.close();else if('home'in k)home();else if('sec'in k)section(+k.sec);else if('locate'in k&&active?.anchor){const q=active.anchor,part=area.querySelector('[data-part="'+q.part+'"]');part.open=true;let mark=part.querySelector('.mgHit');if(!mark){mark=document.createElement('blockquote');mark.className='mgHit';mark.tabIndex=-1;mark.textContent=q.text;part.querySelector('summary').after(mark)}mark.scrollIntoView({block:'center'});mark.focus({preventScroll:true})}else if('detail'in k)openPaperGuide(project,api,true);else if('figure'in k)pop(F[k.figure].page,k.figure);else if('page'in k)pop(+k.page,null);else if('gallery'in k)view('<h2>全部图表</h2><div class="mgTiles">'+figStrip([...Object.keys(F)].sort((x,y)=>F[x].page-F[y].page||F[x].rect[1]-F[y].rect[1]))+'</div>');else if('pages'in k)view('<h2>原版逐页</h2><p>PDF 第 1 页是出版商封面，第 2 页是论文首页。原页保留公式、图例、表格和排版。</p><div class="mgActions">'+Array.from({length:a.pages},(_,i)=>pageBtn(i+1)).join('')+'</div>')}
+ try{lang.value=localStorage.getItem('manuscript:guide-language')||'bi'}catch{}
+ lang.onchange=()=>{d.dataset.lang=lang.value;try{localStorage.setItem('manuscript:guide-language',lang.value)}catch{}};d.dataset.lang=lang.value
+ if(byId.has(start))section(target(byId.get(start)));else home()
+}
+</script></html>

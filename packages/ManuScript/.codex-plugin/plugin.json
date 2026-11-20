@@ -1,0 +1,13 @@
+{
+  "name": "manuscript",
+  "version": "0.13.0",
+  "description": "ManuScript｜论文协作、证据与版本工作台",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "ManuScript",
+    "shortDescription": "与作者逐块写作，管理证据、返修与版本。",
+    "logo": "./assets/logo.svg",
+    "composerIcon": "./assets/mark.svg",
+    "brandColor": "#193F3A"
+  }
+}

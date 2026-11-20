@@ -1,0 +1,33 @@
+{
+  "name": "manuscript",
+  "version": "0.13.0",
+  "private": true,
+  "type": "module",
+  "description": "ManuScript｜论文协作、证据与版本工作台",
+  "scripts": {
+    "test:sidebar": "node --test tests/sidebar-entry.test.mjs"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./workspace-host": "./workbench/dsh-adapter.mjs"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": "0.2.1-rc.4 || 0.2.2-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "license": "MIT"
+}

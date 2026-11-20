@@ -1,0 +1,32 @@
+/* 修改颜色，保存后从「正文编辑 → 更多 → Markdown 配色与快捷键」导入。 */
+:root {
+  --ms-h1: #174c7d;
+  --ms-h2: #653e81;
+  --ms-h3: #286453;
+  --ms-h4: #79501d;
+  --ms-h5: #635575;
+  --ms-h6: #485a6b;
+  --ms-bold: #893d47;
+  --ms-italic: #61518a;
+  --ms-code: #82512d;
+  --ms-link: #195e87;
+  --ms-quote: #486259;
+  --ms-marker: #586778;
+  --ms-highlight: #f3df95;
+}
+
+.theme-dark {
+  --ms-h1: #a7cdfa;
+  --ms-h2: #d8b5eb;
+  --ms-h3: #98d7c1;
+  --ms-h4: #e4bc86;
+  --ms-h5: #c9bfd7;
+  --ms-h6: #b4c3d2;
+  --ms-bold: #ffb3ba;
+  --ms-italic: #d4bff7;
+  --ms-code: #efbc91;
+  --ms-link: #93d3ff;
+  --ms-quote: #b0cabe;
+  --ms-marker: #a9bace;
+  --ms-highlight: #594c22;
+}

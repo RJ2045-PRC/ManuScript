@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "稿件流转 · 从起草到留版",
+    "locale": "zh-CN",
+    "output": "docs/figures/manuscript-workflow/workflow.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "hidden"
+    }
+  },
+  "lanes": [
+    {
+      "id": "ideas",
+      "label": "从构思出发"
+    },
+    {
+      "id": "write",
+      "label": "写作与留版"
+    },
+    {
+      "id": "existing",
+      "label": "已有材料与版本"
+    }
+  ],
+  "mainPath": [
+    "blank",
+    "work",
+    "save",
+    "next"
+  ],
+  "nodes": [
+    {
+      "id": "ideas",
+      "lane": "ideas",
+      "col": 1,
+      "type": "frontend",
+      "label": "从构思卡起草",
+      "sublabel": "选卡、排序，写下简述",
+      "icon": "person"
+    },
+    {
+      "id": "blank",
+      "lane": "write",
+      "col": 0,
+      "type": "frontend",
+      "label": "从空白稿开始",
+      "sublabel": "直接写下第一段",
+      "icon": "person"
+    },
+    {
+      "id": "existing",
+      "lane": "existing",
+      "col": 1,
+      "type": "frontend",
+      "label": "导入已有稿",
+      "sublabel": "导入的章节可继续编辑",
+      "icon": "person"
+    },
+    {
+      "id": "work",
+      "lane": "write",
+      "col": 1,
+      "type": "backend",
+      "label": "编辑工作稿",
+      "sublabel": "修改会自动保存",
+      "icon": "active"
+    },
+    {
+      "id": "save",
+      "lane": "write",
+      "col": 2,
+      "type": "frontend",
+      "label": "点击「保存 Draft」",
+      "sublabel": "作者决定何时留版",
+      "icon": "decision"
+    },
+    {
+      "id": "next",
+      "lane": "write",
+      "col": 3,
+      "type": "database",
+      "label": "留下编号快照",
+      "sublabel": "点版本号可只读回看",
+      "icon": "success"
+    },
+    {
+      "id": "same",
+      "lane": "existing",
+      "col": 2,
+      "type": "database",
+      "label": "保留原编号",
+      "sublabel": "已有快照，内容也相同",
+      "icon": "neutral"
+    }
+  ],
+  "edges": [
+    {
+      "from": "blank",
+      "to": "work"
+    },
+    {
+      "from": "ideas",
+      "to": "work"
+    },
+    {
+      "from": "existing",
+      "to": "work"
+    },
+    {
+      "from": "work",
+      "to": "save"
+    },
+    {
+      "from": "save",
+      "to": "next",
+      "label": "首次或有改动"
+    },
+    {
+      "from": "save",
+      "to": "same",
+      "label": "无变化",
+      "role": "branch"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "从导图写起",
+      "items": [
+        "在未关联正文的构思卡上点「写这一节」。可以先保存简述，稍后再把它写成段落。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "回头改一句",
+      "items": [
+        "在「结构阅读」打开「正文对照」核对原句，再回「正文编辑」修改。上一次的编号快照仍可回看。",
+        "另一窗口已改动正文时，先保存并核对当前稿，再点「保存 Draft」。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "图源与制图署名",
+      "items": [
+        "ManuScript 0.13.0 · 首次公开测试版（2026-11-20）。流程依据为项目文档《稿件流转》和《稿件怎样流转》。",
+        "制图使用 Archify 3.2.0（tt-a1i）。https://github.com/tt-a1i/archify"
+      ]
+    }
+  ]
+}

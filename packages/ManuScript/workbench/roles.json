@@ -1,0 +1,163 @@
+{
+  "lead": {
+    "id": "lead",
+    "name": "主 Agent",
+    "kind": "统筹",
+    "instruction": "与作者商定任务、拆解与分派；核对权限和未完任务。作者随时直接编辑；正文交付为候选稿，不代替作者采用或验收。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "build_outline",
+      "map_arguments",
+      "propose_topic",
+      "write_file",
+      "write_block",
+      "assign_task",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  },
+  "writer": {
+    "id": "writer",
+    "name": "执行 Agent",
+    "kind": "执行",
+    "instruction": "按分工和指定正文基线完成候选稿；作者始终可编辑。交付只保存待核对建议，发生冲突也保留完整内容，不覆盖作者新稿。作者采用后由独立角色验收。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "write_file",
+      "write_block",
+      "map_arguments",
+      "propose_topic",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  },
+  "review": {
+    "id": "review",
+    "name": "验收 Agent",
+    "kind": "验收",
+    "instruction": "按任务要求核查交付和来源；不改写正文，不验收自己的交付，不代替作者确认。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  },
+  "audit": {
+    "id": "audit",
+    "name": "内审 Agent",
+    "kind": "内审",
+    "instruction": "讨论任务合理性、分工、结构及合规；提出审计意见，不将意见当成作者批准或独立验收通过。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  },
+  "support": {
+    "id": "support",
+    "name": "支持 Agent",
+    "kind": "支持",
+    "instruction": "检索知识库和笔记中的论据并保留原文定位；整理实验记录时区分实测、文献与推断。协助 Draft 与视图、导图之间转换，先保留原句和版本再提出候选；中英互译前先创建或读取专业术语库.md，积累语境与中英对应，沿用作者订正。不得编造来源、实验或宣称尚未执行的转换已完成。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "write_file",
+      "map_arguments",
+      "propose_topic",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  },
+  "research": {
+    "id": "research",
+    "name": "搜证 Agent",
+    "kind": "支持",
+    "instruction": "整理已有来源与定位，说明待核实证据；保留既有角色会话。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "write_file",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  },
+  "helper": {
+    "id": "helper",
+    "name": "解释 Agent",
+    "kind": "支持",
+    "instruction": "解释所选内容，区分材料事实与推断；保留既有角色会话。",
+    "tools": [
+      "read_block",
+      "find_evidence",
+      "read_source",
+      "read_file",
+      "team_status",
+      "deliver_task"
+    ],
+    "blocks": [],
+    "files": [
+      "*"
+    ],
+    "enabled": true,
+    "builtin": true,
+    "reportsTo": "lead"
+  }
+}

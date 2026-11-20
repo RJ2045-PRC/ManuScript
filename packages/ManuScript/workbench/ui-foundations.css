@@ -1,0 +1,79 @@
+:root {
+  --ms-ink: var(--text, var(--fg));
+  --ms-muted: var(--soft, var(--muted));
+  --ms-surface: var(--ui, var(--card));
+  --ms-rule: var(--line, var(--rule));
+  --ms-wash: var(--paper, var(--bg));
+  --ms-focus: light-dark(#315e52, #a5d4c3);
+  --ms-error: light-dark(#963e36, #f0aaa1);
+  --ms-active: color-mix(in srgb, var(--ms-focus) 10%, var(--ms-surface));
+  --ms-note-comment-ink: light-dark(#783B76, #DBA9DB);
+  --ms-note-comment-fill: light-dark(#F7EFF7, #302735);
+  --ms-note-comment-mark: light-dark(#F0E1F1, #412D44);
+  --ms-note-highlight-ink: light-dark(#815500, #E6C475);
+  --ms-note-highlight-fill: light-dark(#FBF5E6, #302A20);
+  --ms-note-highlight-mark: light-dark(#F9E9AF, #443820);
+  --ms-note-question-ink: light-dark(#315F91, #9EBFF0);
+  --ms-note-question-fill: light-dark(#EEF4FB, #243043);
+  --ms-note-question-mark: light-dark(#DFEBF9, #2D4059);
+  --ms-control-height: 32px;
+  --ms-control-radius: 5px;
+  --ms-panel-radius: 8px;
+  --ms-panel-shadow: 0 6px 24px #111b1b24;
+  --ms-prose-width: 740px;
+  --ms-prose-leading: 1.75;
+  --ms-motion-feedback: 100ms;
+  --ms-motion-reveal: 150ms;
+  --ms-motion-layout: 150ms;
+  --ms-ease-out: cubic-bezier(.2, .65, .3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ms-motion-feedback: 0ms;
+    --ms-motion-reveal: 0ms;
+    --ms-motion-layout: 0ms;
+  }
+}
+
+:where(button, summary, select, input, textarea, a[href]):focus-visible {
+  outline: 2px solid var(--ms-focus);
+  outline-offset: 2px;
+}
+
+.msControl {
+  min-block-size: var(--ms-control-height);
+  min-inline-size: 24px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--ms-control-radius);
+  background: transparent;
+  color: var(--ms-ink);
+  font: 500 13px/1.4 system-ui, sans-serif;
+  transition: background-color var(--ms-motion-feedback), border-color var(--ms-motion-feedback);
+}
+
+.msControl:not(:disabled):hover { background: var(--ms-wash); border-color: transparent; }
+.msControl:not(:disabled):active,
+.msControl[aria-pressed=true] { background: var(--ms-active); border-color: var(--ms-focus); }
+.msControl:focus-visible { outline-color: var(--ms-focus); }
+.msControl:disabled { opacity: .48; }
+
+.msControl[data-control=commit] {
+  background: var(--ms-ink);
+  color: var(--ms-surface);
+}
+.msControl[data-control=commit]:not(:disabled):hover {
+  background: color-mix(in srgb, var(--ms-ink) 88%, var(--ms-surface));
+}
+.msControl[data-control=source] {
+  padding-inline: 4px;
+  color: var(--ms-focus);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+@keyframes msReveal {
+  from { opacity: .98; translate: 0 2px; }
+  to { opacity: 1; translate: 0 0; }
+}

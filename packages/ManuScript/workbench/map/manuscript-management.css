@@ -1,0 +1,120 @@
+.msManageDialog.scholarDialog {
+  width: min(1024px, calc(100% - 24px));
+  max-width: none;
+  max-height: min(760px, calc(100dvh - 24px));
+  display: grid;
+  grid-template-rows: auto minmax(0,1fr) auto;
+  overflow: hidden;
+  background: var(--ms-surface);
+}
+.msManageDialog:not([open]), .msManageDialog [hidden] {display:none!important}
+.msManageDialog.scholarDialog header {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  position: static;
+  gap: 24px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--ms-rule);
+}
+.msManageDialog header strong {font-size:20px}
+.msManageDialog header nav {display:flex;gap:8px;min-width:0}
+.msManageDialog header nav button {
+  min-height:48px;
+  padding-inline:6px;
+  border:0;
+  border-bottom:2px solid transparent;
+  border-radius:0;
+  font-size:14px;
+  white-space:nowrap;
+}
+.msManageDialog header nav button[aria-pressed=true] {border-bottom-color:var(--ms-focus);background:transparent;font-weight:650}
+.msManageDialog.scholarDialog main {display:grid;grid-template-rows:auto minmax(0,1fr);min-width:0;padding:0;overflow:hidden}
+.msManageSearch {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  padding:8px 16px;
+  border-bottom:1px solid var(--ms-rule);
+}
+.msManageSearch input {flex:1 1 210px;width:0;min-height:32px;font:inherit}
+.msManageScope {display:flex;gap:2px;align-items:center;max-width:100%}
+.msManageScope button {min-height:28px}
+.msManageScope button:first-child {min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.msManageScope button:last-child {flex:none}
+.msManageColumns {display:grid;grid-template-columns:minmax(250px,42%) minmax(0,1fr);min-height:min(410px,52dvh);overflow:hidden}
+.msManageList {display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden}
+.msManageFilters {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  min-height:42px;
+  margin-inline:16px;
+  padding-block:4px;
+  border-bottom:1px solid var(--ms-rule);
+  color:var(--ms-muted);
+  font-size:12px;
+}
+.msManageFilters span {margin-inline-end:auto;white-space:nowrap}
+.msManageFilters select {min-height:28px;max-width:100%;font:inherit}
+.msManageFilters label[data-ms-inline] {display:flex;align-items:center;gap:6px;margin:0;color:inherit}
+.msManageResults {overflow:auto;padding:4px 16px 12px;min-height:0;scrollbar-gutter:stable}
+.msManageResults button[data-ms-row] {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:8px;
+  width:100%;
+  min-height:44px;
+  padding:6px 8px;
+  border:0;
+  border-radius:var(--ms-control-radius);
+  background:none;
+  color:var(--ms-ink);
+  text-align:start;
+  font:inherit;
+  font-size:14px;
+}
+.msManageResults button[data-ms-row] span {display:grid;gap:1px;min-width:0}
+.msManageResults button[data-ms-row]:hover {background:var(--ms-wash)}
+.msManageResults button[data-ms-row][aria-pressed=true] {background:var(--ms-active);box-shadow:inset 2px 0 var(--ms-focus)}
+.msManageResults button[data-ms-row] strong {font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msManageFileRow {display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;border-radius:var(--ms-control-radius)}
+.msManageFileRow:has([aria-pressed=true]) {background:var(--ms-active);box-shadow:inset 2px 0 var(--ms-focus)}
+.msManageFileRow button[data-ms-row][aria-pressed=true] {box-shadow:none;background:none}
+.msManageFileRow .msDocumentThumb {width:32px;height:30px;min-height:0;margin:0 0 0 6px;padding:0;font-size:0}
+.msManageFileRow .msDocumentThumb img {width:100%;height:100%;object-fit:cover}
+.msManageResults small, .msManageDetail small {color:var(--ms-muted);font-size:12px}
+.msManageResults details summary, .msManageFileOps summary {padding:6px 8px;line-height:1.45;cursor:pointer}
+.msManageResults details summary small {float:inline-end}
+.msManageDetail {overflow:auto;min-width:0;padding:12px 16px 16px;border-inline-start:1px solid var(--ms-rule);overflow-wrap:anywhere}
+.msManageDetail h3 {font-size:17px;margin:0 0 4px}
+.msManageDetail h4 {font-size:13px;margin:12px 0 6px}
+.msManageDetail > button {margin:0 0 8px;padding-inline:0;color:var(--ms-focus)}
+.msManageDetail .msDocumentThumb {width:fit-content;min-width:min(112px,100%);max-width:100%;height:auto;min-height:68px;margin:8px 0 0}
+.msManageDetail .msDocumentThumb img {width:auto;height:auto;max-width:100%;max-height:190px;object-fit:contain}
+.msManageDetail ul {padding:0;margin:0;list-style:none}
+.msManageDetail li {display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--ms-rule)}
+.msManageDetail li strong, .msManageDetail li small {display:block}
+.msManageDetail li button {flex:none}
+.msManageActions {display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.msManageFileOps {margin-top:12px;border-top:1px solid var(--ms-rule);padding-top:4px}
+.msManageFileOps summary {width:max-content}
+.msManageMath {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;min-height:88px;margin:8px 0;padding:8px 12px;background:var(--ms-wash);border-radius:var(--ms-control-radius)}
+.msManageMath span {overflow:auto;text-align:center}
+.msManageDetail textarea {width:100%;font:13px/1.5 ui-monospace,monospace}
+.msManageDialog .schError {position:static;margin:0;padding:8px 16px;border-top:1px solid var(--ms-rule);font-size:13px}
+.msManageDialog .schError:empty {display:none}
+.msManageEmpty {color:var(--ms-muted);margin:8px 0}
+.msManageEmpty button {margin-inline-start:4px;color:var(--ms-focus);text-decoration:underline}
+.msManageDialog[data-compact] header {grid-template-columns:minmax(0,1fr) auto;gap:0 8px;padding-top:4px}
+.msManageDialog[data-compact] header [data-x] {grid-area:1/2}
+.msManageDialog[data-compact] header nav {grid-column:1/-1}
+.msManageDialog[data-compact] header nav button {min-height:40px}
+.msManageDialog[data-compact] .msManageSearch {flex-wrap:wrap;gap:8px}
+.msManageDialog[data-compact] .msManageColumns {grid-template-columns:minmax(0,1fr);min-height:0}
+.msManageDialog[data-compact] .msManageDetail {border:0}
+.msManageDialog[data-compact]:not([data-detail]) .msManageDetail,
+.msManageDialog[data-compact][data-detail] .msManageList {display:none}
