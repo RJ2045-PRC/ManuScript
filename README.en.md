@@ -4,7 +4,9 @@
 
 ManuScript is a local workspace for research writing. Lay out a paper in a chapter map, follow a citation to the page that supports it, and match a Word comment to the exact passage your reviewer read.
 
-[Download v0.13.0 public beta](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [Read the sample paper (Chinese)](examples/杯盖与降温/稿件/Draft-02.md) · [Install with an agent](#install-with-an-agent)
+v0.13.0 is the first public beta. The stable release is still in development.
+
+[Try the interactive demo](https://rj2045-prc.github.io/ManuScript/?lang=en) · [Download v0.13.0 public beta](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [Read the sample paper (Chinese)](examples/杯盖与降温/稿件/Draft-02.md) · [Install with an agent](#install-with-an-agent)
 
 ![The chapter map shows sections 3.1 through 3.4 under Results, with section 3.3 selected.](docs/screenshots/results-chapter-map-b4d8c98d.png)
 

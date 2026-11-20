@@ -4,7 +4,9 @@
 
 ManuScript 是一个本地论文写作工作台。你可以在导图里搭章节，从正文引文跳到来源 PDF 的具体页，再把 Word 批注对回审阅人读到的那一版。
 
-[下载 v0.13.0 首次公开测试版](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [阅读示例论文](examples/杯盖与降温/稿件/Draft-02.md) · [复制给 Agent 安装](#复制给-agent-安装)
+v0.13.0 是首次公开测试版，正式版仍在开发中。
+
+[试用交互演示](https://rj2045-prc.github.io/ManuScript/) · [下载 v0.13.0 首次公开测试版](https://github.com/RJ2045-PRC/ManuScript/releases/tag/v0.13.0) · [阅读示例论文](examples/杯盖与降温/稿件/Draft-02.md) · [复制给 Agent 安装](#复制给-agent-安装)
 
 ![章节导图展开 3 Results，显示 3.1 至 3.4 四个子节，当前选中 3.3 八组同杯比较。](docs/screenshots/results-chapter-map-b4d8c98d.png)
 
