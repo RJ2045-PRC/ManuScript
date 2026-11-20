@@ -22,7 +22,7 @@
   if(message.method==='ui/notifications/host-context-changed')applyContext(message.params)
  })
  const ready=(async()=>{
-  const initialized=await send('ui/initialize',{appInfo:{name:'ManuScript',version:'0.13.0'},appCapabilities:{},protocolVersion:'2026-01-26'})
+  const initialized=await send('ui/initialize',{appInfo:{name:'ManuScript',version:'0.13.1'},appCapabilities:{},protocolVersion:'2026-01-26'})
   applyContext(initialized?.hostContext);notify('ui/notifications/initialized');return initialized
  })()
  window.manuscriptMcpApi=async(op,args={})=>{

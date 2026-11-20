@@ -144,7 +144,7 @@
       "dot": "slate",
       "title": "图源与制图署名",
       "items": [
-        "ManuScript 0.13.0 · 首次公开测试版（2026-11-20）。流程依据为项目文档《稿件流转》和《稿件怎样流转》。",
+        "ManuScript 0.13.1 · DSH 商城公测版（2026-11-20）。流程依据为项目文档《稿件流转》和《稿件怎样流转》。",
         "制图使用 Archify 3.2.0（tt-a1i）。https://github.com/tt-a1i/archify"
       ]
     }

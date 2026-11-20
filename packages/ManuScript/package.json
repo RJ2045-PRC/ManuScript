@@ -1,6 +1,6 @@
 {
   "name": "manuscript",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "private": true,
   "type": "module",
   "description": "ManuScript｜论文协作、证据与版本工作台",
@@ -15,7 +15,7 @@
   },
   "dsh": {
     "engines": {
-      "dsh": "0.2.1-rc.4 || 0.2.2-rc.1"
+      "dsh": "0.2.1-rc.4 || 0.2.2-rc.1 || 0.2.2-rc.5"
     },
     "bundle": {
       "patch": "./cordis.patch.yml"

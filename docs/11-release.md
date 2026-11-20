@@ -9,9 +9,12 @@ flowchart TD
     C --> D[确认版本与授权]
     D --> E[发布 Release 并核验下载]
     E --> F[验收中英文首页]
+    F -->|商城版| M[提交社区目录条目]
+    M --> N[从商城重装并复验]
+    N --> H
     A -->|只改首页| F
     A -->|只改演示| G[走查本机 demo]
-    F --> H{演示也有更新吗}
+    F -->|其他版本或只改首页| H{演示也有更新吗}
     H -->|有| G
     H -->|无| I[交付公开链接]
     G --> J[作者确认预览]
@@ -53,6 +56,13 @@ flowchart TD
 - GitHub About 用一句英文说明用途，Website 指向公开 demo，Topics 选与产品和宿主相符的关键词。在未经登录的浏览器从仓库根页验收双向切换。
 - 首页和 demo 使用发布插件的[产品图标](../packages/ManuScript/assets/logo.svg)。从本次发布包载入对应示例，截取能读出章节名、表格、来源页和返修位置的实机画面。内容变化时采用新文件名，避免缓存显示旧图；写清版本、宿主、系统和替代文本。
 - 英文和中文各保留一段可直接复制给 Agent 的安装指令。说明怎样选择 Codex 或 DSH，macOS 和 Windows 分别需要什么、如何验证成功；注明已实测和待实测的组合。从两页分别点击安装、Release 和演示链接。
+
+## DSH 社区商城
+
+1. 在空白 DSH Web 配置和项目库中，先安装准备发布的 tarball，载入公开示例，核对两个 Draft、引文来源和 Word 回稿。留一份新 Draft，重启后回看并导出 PDF。核对声明的每个宿主版本，再用上一版的项目副本试升级、备份和恢复。记录实测平台、宿主、包哈希和结果。
+2. 随对应的 Release 提供初始化脚本与同版锁定文件，纳入 SHA-256 清单。使用 [macOS DSH Web 安装说明](../README.zh-CN.md#在-macos-的-dsh-web-安装)完成一次安装。初始化使用用户级虚拟环境，DSH 正常启动后自动找到它。
+3. 作者确认发布材料后，发布并重新校验下载件。向公开仓库追加 `dsh-plugin` Topic。按 [目录贡献指南](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md) 向目录提交一个 `docs` 分类的双语条目，指向插件子目录和固定发行标签的 `.tgz`。
+4. 合并后在 [dsh-market](https://github.com/dsh-market/dsh-market) 从空白配置搜索、安装并重走示例。记录收录 PR、商城入口和实测结果。更新时先验证新包再改目录链接。发现问题时，确认上一版适用的宿主后再回退链接，或发布带新标签的修复版。
 
 ## 预整理的在线 demo
 

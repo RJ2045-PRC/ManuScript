@@ -131,6 +131,14 @@ window.__ModuleLoader__.load({id:'manuscript',factory(require){
     function enter(p){surface?.classList.remove('msColdStart');localStorage.setItem('lunxu:last:dsh',p.id);setProject(p);setMode('map');setForm(null);setErr('')}
     async function reload(){const ps=await act('dsh_library');setList(ps);return ps}
     R.useEffect(()=>{reload().catch(e=>setErr(e.message))},[])
+    async function loadExample(){
+      setWorking(true);setErr('')
+      try{
+        const example=await act('example')
+        await reload()
+        choose('link',example)
+      }catch(e){setErr(e.message)}finally{setWorking(false)}
+    }
     function choose(kind,p){setForm({kind,p});setPath('');setTitle('');setErr('')}
     async function open(p){if(!p.path){choose('link',p);return}setWorking(true);setOpeningId(p.id);setErr('');try{await act('dsh_bind',{project:p.id,path:p.path});enter(p)}catch(e){setErr(e.message)}finally{setOpeningId(null);setWorking(false)}}
     async function submit(e){e.preventDefault();if(working)return;setWorking(true);try{const b=await act('dsh_bind',{project:form.p?.id,path:path.trim(),title:title.trim(),create:form.kind!=='open'});if(form.kind==='new'&&!b.reused)await act('dsh_metadata',{project:b.id,category,description});const ps=await reload();enter(ps.find(x=>x.id===b.id))}catch(e){setErr(e.message)}finally{setWorking(false)}}
@@ -147,7 +155,7 @@ window.__ModuleLoader__.load({id:'manuscript',factory(require){
     if(project)return h('main',{style:{height:'100%',position:'relative',display:'flex',flexDirection:'column',minHeight:0}},css,mode==='map'?null:h('nav',{className:'lxProjectNav'},button('‹ 项目库',home),button('返回稿件',async()=>{if(await leaveOK())setMode('map')})),err?h('p',{role:'alert'},err):null,h(Desk,{key:project.id+mode,project,map:mode==='map',onBack:home}))
     const selected=form?.p
     const finish=async fn=>{if(working)return;setWorking(true);try{await fn();await reload();if(removed)setRemoved(await act('dsh_removed'));setForm(null);setErr('')}catch(e){setErr(e.message)}finally{setWorking(false)}}
-    return h('main',{className:'lxLibrary'},css,h('section',null,h('div',{className:'ms-library-brand'},h(mark,{size:28}),h('b',null,'ManuScript'),h('small',null,'工作空间')),h('h1',null,'项目库'),h('p',null,'选择项目，继续构思、写作与核对证据。'),h('nav',null,button('新建项目文件夹',()=>cardForm('new'),{className:'lxPrimary'}),button('打开本地文件夹',()=>cardForm('open')))),err?h('p',{role:'alert'},err):null,
+    return h('main',{className:'lxLibrary'},css,h('section',null,h('div',{className:'ms-library-brand'},h(mark,{size:28}),h('b',null,'ManuScript'),h('small',null,'工作空间')),h('h1',null,'项目库'),h('p',null,'选择项目，继续构思、写作与核对证据。'),h('nav',null,button('新建项目文件夹',()=>cardForm('new'),{className:'lxPrimary'}),button('打开本地文件夹',()=>cardForm('open')),button('载入杯盖与降温示例',loadExample,{disabled:working||list===null}))),err?h('p',{role:'alert'},err):null,
      form?h('section',{className:'lxShelfDialog',role:'region','aria-label':'项目操作'},h('h3',null,({new:'新建项目',link:'绑定已有项目',open:'打开本地文件夹',meta:'编辑项目资料',remove:'从项目库移除？'})[form.kind]),
      form.kind==='remove'?h(R.Fragment,null,h('p',null,'仅移除「'+selected.title+'」的项目库入口。本地文件、稿件版本和 DSH 会话都会保留。'),h('p',{className:'lxPath'},selected.path||'该项目还没有绑定本地文件夹。'),selected.path?button('在文件管理器中打开',()=>act('dsh_reveal',{project:selected.id}).catch(e=>setErr(e.message))):null,h('p',null,'若要删除磁盘文件，请自行前往文件管理器操作。'),button('确认移除',()=>finish(()=>act('dsh_remove',{project:selected.id,confirmed:selected.id})),{disabled:working}),button('取消',()=>setForm(null))):
      form.kind==='meta'?h('form',{onSubmit:e=>{e.preventDefault();finish(()=>act('dsh_metadata',{project:selected.id,category,description}))}},meta(),h('button',{type:'submit',disabled:working},working?'正在保存…':'保存资料'),button('取消',()=>setForm(null))):

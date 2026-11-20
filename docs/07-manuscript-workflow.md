@@ -4,7 +4,7 @@
 
 ![三种起稿方式汇入工作稿。点击「保存 Draft」后，首次或有改动会留下编号快照，内容相同则保留原编号。](figures/manuscript-workflow/overview.svg)
 
-**0.13.0 首次公开测试版流程图**（2026-11-20）。使用 Archify 3.2.0（tt-a1i）制作。静态总览和交互版共用一份图源。[打开交互图](figures/manuscript-workflow/workflow.html) · [可编辑图源](figures/manuscript-workflow/workflow.json) · [Archify 上游](https://github.com/tt-a1i/archify) · [工具署名与许可](figures/archify-licenses/NOTICE)
+**0.13.1 DSH 商城公测版流程图**（2026-11-20）。使用 Archify 3.2.0（tt-a1i）制作。静态总览和交互版共用一份图源。[打开交互图](figures/manuscript-workflow/workflow.html) · [可编辑图源](figures/manuscript-workflow/workflow.json) · [Archify 上游](https://github.com/tt-a1i/archify) · [工具署名与许可](figures/archify-licenses/NOTICE)
 
 在 GitHub 浏览时可直接看上图。要放大、平移或追踪路径，请下载交互图的 HTML 文件，用浏览器打开。
 

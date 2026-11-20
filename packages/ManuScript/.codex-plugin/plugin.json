@@ -1,6 +1,6 @@
 {
   "name": "manuscript",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "ManuScript｜论文协作、证据与版本工作台",
   "mcpServers": "./.mcp.json",
   "interface": {

@@ -1,4 +1,6 @@
-# ManuScript 0.13.0 · 首次公开测试版
+# ManuScript 0.13.1 · DSH 商城公测版
+
+macOS DSH Web 安装见[公开安装说明](../README.zh-CN.md#在-macos-的-dsh-web-安装)。完成一次初始化后，从侧栏打开 ManuScript，并在项目库载入「杯盖与降温」示例。为示例选择专用文件夹后可直接试写、留版和导出。
 
 安装与下载 · [完整论文示例](../examples/杯盖与降温/README.md)
 

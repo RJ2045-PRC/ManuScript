@@ -6,7 +6,7 @@ import {readFile,mkdtemp,rm} from 'node:fs/promises'
 import {existsSync} from 'node:fs'
 import {fileURLToPath} from 'node:url'
 import {homedir,tmpdir} from 'node:os'
-import {join} from 'node:path'
+import {delimiter,join} from 'node:path'
 import {randomBytes,randomUUID} from 'node:crypto'
 import http from 'node:http'
 import {projectTools,scopedMcp} from './project-tools.mjs'
@@ -18,10 +18,21 @@ function child(cmd,args,input,opts={},onLine){
  let partial='';p.stdout.on('data',d=>{if(onLine){partial+=d.toString();const lines=partial.split('\n');partial=lines.pop();for(const line of lines)onLine(line)}if((bytes+=d.length)>180e6)p.kill();else out.push(d)});p.stderr.on('data',d=>{if(err.length<20)err.push(d)});p.once('error',no);p.stdin.on('error',()=>{});p.once('close',(c)=>c===0?ok(Buffer.concat(out).toString()):no(Error(Buffer.concat(err).toString().slice(-650)||'运行未完成')));p.stdin.end(input)})
 }
 export function python(host,role,op,args={}){
- const py=process.env.MANUSCRIPT_PYTHON||process.env.LUNXU_PYTHON||(existsSync(join(deps,'python/bin/python3'))?join(deps,'python/bin/python3'):'python3')
+ const installedPython=join(homedir(),'.manuscript/runtime/current/bin/python3')
+ const bundledPython=join(deps,'python/bin/python3')
+ const useInstalledRuntime=host==='dsh'&&process.platform==='darwin'&&existsSync(installedPython)
+ const py=process.env.MANUSCRIPT_PYTHON||process.env.LUNXU_PYTHON||
+  (useInstalledRuntime?installedPython:existsSync(bundledPython)?bundledPython:'python3')
  const legacy=join(homedir(),'.lunxu')
  const root=process.env.MANUSCRIPT_DATA_DIR||process.env.LUNXU_DATA_DIR||(existsSync(legacy)?legacy:join(homedir(),'.manuscript'))
- return child(py,[join(here,'engine.py'),join(root,host,'projects.sqlite')],JSON.stringify({role,op,args}),{env:{...process.env,PATH:[process.env.PATH,'/opt/homebrew/bin',join(deps,'bin/override')].join(':'),PYTHONDONTWRITEBYTECODE:'1'}}).then(x=>{const v=JSON.parse(x);if(!v.ok)throw Error(v.error);return v.result})
+ const localTools=host==='dsh'&&process.platform==='darwin'?['/usr/local/bin','/Applications/LibreOffice.app/Contents/MacOS']:[]
+ const path=[process.env.PATH,'/opt/homebrew/bin',...localTools,join(deps,'bin/override')].filter(Boolean).join(delimiter)
+ return child(py,[join(here,'engine.py'),join(root,host,'projects.sqlite')],JSON.stringify({role,op,args}),{env:{...process.env,PATH:path,PYTHONDONTWRITEBYTECODE:'1'}}).then(x=>{const v=JSON.parse(x);if(!v.ok)throw Error(v.error);return v.result}).catch(error=>{
+  if(host==='dsh'&&(error.code==='ENOENT'||/ModuleNotFoundError:/.test(error.message))){
+   throw new Error('ManuScript 缺少运行依赖。请按安装指南运行一次 setup-dsh-runtime.py，或检查 MANUSCRIPT_PYTHON。',{cause:error})
+  }
+  throw error
+ })
 }
 const schemas={框架:'{"blocks":[{"title":"短语","purpose":"目的","chain":["论点","依据"]}]}',拆解:'{"items":[{"message":"反馈里逐字连续的原话","block":"已存在的块 ID 或 null"}]}',搜证:'{"text":"所见证据与限制","refs":[{"source":"来源ID","locator":"页码、节或表"}]}',写作:'{"text":"整块新正文，保持块的格式","refs":[]}',审查:'{"passed":true,"detail":"逐项核验依据或返工原因","refs":[]}',解释:'{"text":"回答，区分原文和解释","refs":[]}',摘要:'{"text":"带块名的简短修改摘要"}',统筹:'{"text":"方案与理由","tasks":[{"kind":"搜证或写作或审查","block":"已有块ID","instruction":"工作要求"}]}'}
 export async function jobContext(host,project,id){

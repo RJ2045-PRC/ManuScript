@@ -1,4 +1,4 @@
-# ManuScript 0.13.0 · 首次公开测试版
+# ManuScript 0.13.1 · DSH 商城公测版
 
 <img src="assets/logo.svg" width="64" height="64" alt="ManuScript 标志">
 
@@ -9,6 +9,8 @@ ManuScript 是原「论序」的正式新名称。当前插件与工具标识为
 ## 第一次在 DSH 试写
 
 从左栏打开 ManuScript，在项目库新建或打开项目。顶部有「导图」「正文编辑」「结构阅读」三个入口。
+
+第一次试用可以在项目库点「载入杯盖与降温示例」，再绑定一个专用本地文件夹。示例会独立创建一份项目，包含 Draft 01、Draft 02、引用来源和 Word 意见。[macOS DSH Web 安装与依赖](https://github.com/RJ2045-PRC/ManuScript/blob/main/README.zh-CN.md#在-macos-的-dsh-web-安装)
 
 1. 在「正文编辑」写一段，等待自动保存。点击右下角「保存 Draft」留下编号快照。之后点版本号可回看，工作稿可继续修改。
 2. 在「导图」单击章节选中它，用节点的「⋯ → 定位正文」打开该节。点顶栏「正文编辑」会回到上次停笔的位置。
